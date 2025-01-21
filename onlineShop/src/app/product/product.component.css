@@ -1,0 +1,39 @@
+/* Grid container a kártyákhoz */
+.card-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); /* Kisebb kártyák */
+    gap: 12px; /* Kisebb térköz */
+    padding: 12px; /* Külső margó */
+  }
+  
+  /* Kártyák stílusa */
+  .product-card {
+    aspect-ratio: 1; /* Négyzet alakú kártyák */
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: 8px; /* Kártya belső margó csökkentése */
+  }
+  
+  mat-card-title {
+    font-size: 1em; /* Cím kisebb */
+    font-weight: bold;
+  }
+  
+  mat-card-subtitle {
+    color: #666;
+    font-size: 0.9em; /* Kisebb al-cím */
+  }
+  
+  mat-card-image {
+    object-fit: cover; /* Kép helyes arányainak megtartása */
+    height: 100%;
+    width: 100%;
+  }
+  
+  button {
+    align-self: center; /* Gomb középre igazítása */
+    padding: 4px 8px; /* Gomb kisebb méretű */
+    font-size: 0.8em;
+  }
+  
