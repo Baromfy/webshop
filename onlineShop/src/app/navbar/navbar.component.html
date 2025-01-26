@@ -1,0 +1,18 @@
+<mat-toolbar color="primary">
+    <button mat-button routerLink="/" class="logo-button">
+        Főoldal
+      </button>
+    <span class="spacer"></span>
+
+    <button mat-button *ngIf="authService.isAdmin$  | async" routerLink="/uploadProducts">
+        Termékek feltöltése
+      </button>
+    
+    <button mat-button *ngIf="!(authService.loggedIn | async)" routerLink="/login">
+      Bejelentkezés
+    </button>
+    
+    <button mat-button *ngIf="authService.loggedIn | async" (click)="authService.logout()">
+      Kijelentkezés
+    </button>
+</mat-toolbar>

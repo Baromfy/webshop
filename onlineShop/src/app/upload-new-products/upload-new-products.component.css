@@ -1,0 +1,8 @@
+.admin-container {
+    max-width: 600px;
+    margin: 20px auto;
+  }
+  .full-width {
+    width: 100%;
+    margin-bottom: 20px;
+  }

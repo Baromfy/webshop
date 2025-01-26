@@ -1,10 +1,4 @@
-<div class="header">
-  <h1>Termékkatalógus</h1>
-  <p>Fedezd fel a legjobb termékeinket!</p>
-</div>
-
 <div class="layout">
-  <!-- Szűrőpanel -->
   <aside class="filter-sidebar">
     <h3>Szűrés</h3>
     <div class="filter-group">
@@ -14,18 +8,8 @@
       <input id="price-to" type="number" placeholder="Max. ár">
       <button>Szűrés</button>
     </div>
-    <div class="category-group">
-      <h4>Kategóriák</h4>
-      <ul>
-        <li><a href="#">Notebook</a></li>
-        <li><a href="#">Notebook skin</a></li>
-        <li><a href="#">Notebook dokkoló</a></li>
-        <li><a href="#">Egyéb alkatrészek</a></li>
-      </ul>
-    </div>
   </aside>
 
-  <!-- Termékek -->
   <main class="product-list">
     <div *ngFor="let product of products$ | async" class="product-item">
       <mat-card>
@@ -33,9 +17,6 @@
           <mat-card-title>{{ product.name }}</mat-card-title>
           <mat-card-subtitle>{{ product.price | currency: 'HUF' }}</mat-card-subtitle>
         </mat-card-header>
-        <img mat-card-image [src]="product.imageUrl" alt="{{ product.name }}" />
-        <mat-card-content>
-        </mat-card-content>
         <mat-card-actions>
           <button mat-flat-button color="primary">Kosárhoz adás</button>
         </mat-card-actions>

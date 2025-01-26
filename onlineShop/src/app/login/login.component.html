@@ -1,0 +1,16 @@
+<mat-card>
+    <h2>Bejelentkezés</h2>
+    <mat-card-content>
+        <form (submit)="onSubmit()">
+            <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required />
+            <br>
+            <br>
+            <input type="password" [(ngModel)]="password" name="password" placeholder="Jelszó" required />
+            <br>
+            <br>
+            <button type="submit">Bejelentkezés</button>
+          </form>
+      <a routerLink="/register">Még nincs fiókod? Regisztrálj!</a>
+    </mat-card-content>
+  </mat-card>
+

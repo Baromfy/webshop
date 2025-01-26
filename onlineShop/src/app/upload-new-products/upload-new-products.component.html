@@ -1,0 +1,28 @@
+<div class="admin-container">
+    <h1>Admin oldal - Termékek kezelése</h1>
+  
+    <form (submit)="addProduct(); $event.preventDefault()">
+      <mat-form-field class="full-width">
+        <mat-label>Termék neve</mat-label>
+        <input matInput [(ngModel)]="productName" name="productName" required />
+      </mat-form-field>
+  
+      <mat-form-field class="full-width">
+        <mat-label>Termék ára</mat-label>
+        <input matInput type="number" [(ngModel)]="productPrice" name="productPrice" required />
+      </mat-form-field>
+      <mat-form-field class="full-width">
+        <mat-label>Termék azonosítója</mat-label>
+        <input matInput [(ngModel)]="productId" name="productId" required />
+      </mat-form-field>
+  
+      <mat-form-field class="full-width">
+        <mat-label>Termék kategóriája</mat-label>
+        <input matInput [(ngModel)]="productCategory" name="productCategory" required />
+      </mat-form-field>
+  
+      <button mat-raised-button color="primary" type="submit">Termék hozzáadása</button>
+    </form>
+
+  </div>
+  
