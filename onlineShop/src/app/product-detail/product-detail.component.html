@@ -1,0 +1,121 @@
+<div class="product-detail-container" *ngIf="product">
+  <div class="product-header">
+    <h1>{{ product.name }}</h1>
+    <div class="product-price">{{ product.price | currency: 'HUF' }}</div>
+  </div>
+
+  <div class="product-content">
+    <div class="product-image-section">
+      <img src="assets/laptop.jpg" alt="{{ product.name }}" class="product-image">
+    </div>
+
+    <div class="product-info-section">
+      <h2>Termék specifikációk</h2>
+
+      <div class="spec-group">
+        <h3>Általános információk</h3>
+        <div class="spec-item">
+          <span class="spec-label">Gyártó:</span>
+          <span class="spec-value">{{ product.manufacturer }}</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Operációs rendszer:</span>
+          <span class="spec-value">{{ product.os }}</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Termékcsalád:</span>
+          <span class="spec-value">{{ product.productFamily }}</span>
+        </div>
+      </div>
+
+      <div class="spec-group">
+        <h3>Processzor és memória</h3>
+        <div class="spec-item">
+          <span class="spec-label">Processzor típus:</span>
+          <span class="spec-value">{{ product.processorType }}</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Processzor sebesség:</span>
+          <span class="spec-value">{{ product.processorSpeed }} GHz</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Gyorsítótár mérete:</span>
+          <span class="spec-value">{{ product.cacheSize }} MB</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">RAM mérete:</span>
+          <span class="spec-value">{{ product.ramSize }} GB</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">RAM típusa:</span>
+          <span class="spec-value">{{ product.ramType }}</span>
+        </div>
+      </div>
+
+      <div class="spec-group">
+        <h3>Kijelző</h3>
+        <div class="spec-item">
+          <span class="spec-label">Képernyő mérete:</span>
+          <span class="spec-value">{{ product.screenSize }} inch</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Felbontás:</span>
+          <span class="spec-value">{{ product.screenResolution }}</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Képfrissítési frekvencia:</span>
+          <span class="spec-value">{{ product.refreshRate }} Hz</span>
+        </div>
+      </div>
+
+      <div class="spec-group">
+        <h3>Tárhely és grafika</h3>
+        <div class="spec-item">
+          <span class="spec-label">Tárhely kapacitás:</span>
+          <span class="spec-value">{{ product.storageCapacity }} GB</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Tárhely típusa:</span>
+          <span class="spec-value">{{ product.storageType }}</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Grafikus vezérlő:</span>
+          <span class="spec-value">{{ product.gpuType }}</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Grafikus memória:</span>
+          <span class="spec-value">{{ product.gpuMemory }}</span>
+        </div>
+      </div>
+
+      <div class="spec-group">
+        <h3>Fizikai jellemzők és csatlakozók</h3>
+        <div class="spec-item">
+          <span class="spec-label">Akkumulátor cellák:</span>
+          <span class="spec-value">{{ product.batteryCells }} cella</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">Súly:</span>
+          <span class="spec-value">{{ product.weight }} kg</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">USB 3.2 portok:</span>
+          <span class="spec-value">{{ product.usb32Ports }}</span>
+        </div>
+        <div class="spec-item">
+          <span class="spec-label">USB Type-C portok:</span>
+          <span class="spec-value">{{ product.usbTypeCPorts }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="product-actions">
+    <button mat-raised-button color="primary">Kosárba</button>
+    <button mat-button [routerLink]="['/']">Vissza a termékekhez</button>
+  </div>
+</div>
+
+<div class="loading-container" *ngIf="!product">
+  <p>Termék betöltése...</p>
+</div>

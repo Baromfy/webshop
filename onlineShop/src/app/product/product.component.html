@@ -25,7 +25,9 @@
         </mat-card-content>
         
         <mat-card-actions class="product-actions">
-          <button mat-flat-button color="primary">Kosárhoz adás</button>
+          <button mat-flat-button color="primary" (click)="viewProductDetails(product.id)">
+            Részletek
+          </button>
         </mat-card-actions>
       </mat-card>
     </div>

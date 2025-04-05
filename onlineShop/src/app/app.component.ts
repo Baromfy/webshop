@@ -4,11 +4,12 @@ import { ProductComponent } from "./product/product.component";
 import { NavbarComponent } from "./navbar/navbar.component";
 import { LoginComponent } from "./login/login.component";
 import { RouterModule } from '@angular/router';
+import { ProductDetailComponent } from "./product-detail/product-detail.component";
 
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, NavbarComponent, ProductComponent, LoginComponent, RouterModule,],
+  imports: [RouterOutlet, NavbarComponent, ProductComponent, LoginComponent, RouterModule, ProductDetailComponent],
   templateUrl: './app.component.html',
   styleUrl: './app.component.css'
 })

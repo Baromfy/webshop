@@ -6,6 +6,7 @@ import { CommonModule } from '@angular/common';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
 import { RouterModule } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-product',
@@ -16,7 +17,12 @@ import { RouterModule } from '@angular/router';
 export class ProductComponent implements OnInit {
   products$!: Observable<Product[]>;
 
-  constructor(private firestore: Firestore) {}
+  constructor(private firestore: Firestore, private router: Router) {}
+
+
+viewProductDetails(productId: string) {
+  this.router.navigate(['/detail', productId]);
+}
 
   ngOnInit(): void {
     const productsCollection = collection(this.firestore, 'products');
