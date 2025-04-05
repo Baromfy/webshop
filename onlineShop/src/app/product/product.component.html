@@ -13,15 +13,21 @@
   <main class="product-list">
     <div *ngFor="let product of products$ | async" class="product-item">
       <mat-card>
-        <mat-card-header>
-          <mat-card-title>{{ product.name }}</mat-card-title>
-          <mat-card-subtitle>{{ product.price | currency: 'HUF' }}</mat-card-subtitle>
-        </mat-card-header>
-        <mat-card-actions>
+        <div class="product-image-container">
+          <img src="assets/laptop.jpg" alt="{{product.name}}" class="product-image">
+        </div>
+        
+        <mat-card-content class="card-content">
+          <mat-card-title class="product-title">{{ product.name }}</mat-card-title>
+          <div class="spacer"></div>
+          <mat-card-subtitle class="product-price">{{ product.price | currency: 'HUF' }}</mat-card-subtitle>
+          <div class="spacer"></div>
+        </mat-card-content>
+        
+        <mat-card-actions class="product-actions">
           <button mat-flat-button color="primary">Kosárhoz adás</button>
         </mat-card-actions>
       </mat-card>
     </div>
   </main>
 </div>
-
