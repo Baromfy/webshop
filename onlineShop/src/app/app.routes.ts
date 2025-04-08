@@ -11,6 +11,5 @@ export const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
   { path: 'uploadProducts', component: UploadNewProductsComponent },
-  // Wildcard route to handle mismatched URLs
   { path: '**', redirectTo: '' }
 ];

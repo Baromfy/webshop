@@ -1,32 +1,143 @@
 <div class="layout">
   <aside class="filter-sidebar">
-    <h3>Szűrés</h3>
-    <div class="filter-group">
-      <label for="price-from">Ár (-tól):</label>
-      <input id="price-from" type="number" placeholder="Min. ár">
-      <label for="price-to">Ár (-ig):</label>
-      <input id="price-to" type="number" placeholder="Max. ár">
-      <button>Szűrés</button>
+    <div [formGroup]="filterForm">
+      <div class="sidebar-header">
+        <h3>Szűrési lehetőségek</h3>
+        <mat-icon>filter_alt</mat-icon>
+        <button mat-stroked-button (click)="resetFilters()" class="reset-button">
+          Szűrők törlése
+        </button>
+      </div>
+      
+      <div class="filter-group">
+        <h4>Ár tartomány (HUF)</h4>
+        <div class="price-range">
+          <mat-form-field appearance="outline">
+            <mat-label>Minimum ár</mat-label>
+            <input matInput type="number" formControlName="priceMin" placeholder="0">
+          </mat-form-field>
+          
+          <mat-form-field appearance="outline">
+            <mat-label>Maximum ár</mat-label>
+            <input matInput type="number" formControlName="priceMax" placeholder="Max">
+          </mat-form-field>
+        </div>
+      </div>
+
+      <div class="filter-group">
+        <h4>Gyártó</h4>
+        <mat-selection-list formControlName="manufacturers">
+          <mat-list-option *ngFor="let manufacturer of manufacturers" [value]="manufacturer">
+            {{manufacturer}}
+          </mat-list-option>
+        </mat-selection-list>
+      </div>
+
+      <div class="filter-group">
+        <h4>Processzor</h4>
+        <mat-selection-list formControlName="processors">
+          <mat-list-option *ngFor="let processor of processors" [value]="processor">
+            {{processor}}
+          </mat-list-option>
+        </mat-selection-list>
+      </div>
+      
+      <div class="filter-group">
+        <h4>RAM méret (GB)</h4>
+        <mat-selection-list formControlName="ramSizes">
+          <mat-list-option *ngFor="let size of ramSizes" [value]="size">
+            {{size}} GB
+          </mat-list-option>
+        </mat-selection-list>
+      </div>
+      
+      <div class="filter-group">
+        <h4>Tárhely méret (GB)</h4>
+        <mat-selection-list formControlName="storageSizes">
+          <mat-list-option *ngFor="let size of storageSizes" [value]="size">
+            {{size}} GB
+          </mat-list-option>
+        </mat-selection-list>
+      </div>
+      
+      <div class="filter-group">
+        <h4>Operációs rendszer</h4>
+        <mat-selection-list formControlName="osList">
+          <mat-list-option *ngFor="let os of osList" [value]="os">
+            {{os}}
+          </mat-list-option>
+        </mat-selection-list>
+      </div>
+      
+      <div class="filter-group">
+        <h4>Képernyő méret (inch)</h4>
+        <mat-selection-list formControlName="screenSizes">
+          <mat-list-option *ngFor="let size of screenSizes" [value]="size">
+            {{size}}"
+          </mat-list-option>
+        </mat-selection-list>
+      </div>
     </div>
   </aside>
 
   <main class="product-list">
-    <div *ngFor="let product of products$ | async" class="product-item">
-      <mat-card>
+    <div class="list-header">
+      <h2>Laptopok</h2>
+      <div class="sort-options">
+        <mat-form-field appearance="outline">
+          <mat-label>Rendezés</mat-label>
+          <mat-select>
+            <mat-option value="price-asc">Ár szerint növekvő</mat-option>
+            <mat-option value="price-desc">Ár szerint csökkenő</mat-option>
+            <mat-option value="name-asc">Név szerint (A-Z)</mat-option>
+            <mat-option value="name-desc">Név szerint (Z-A)</mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+    </div>
+    
+    <div *ngFor="let product of filteredProducts$ | async" class="product-item">
+      <mat-card class="product-card">
         <div class="product-image-container">
-          <img src="assets/laptop.jpg" alt="{{product.name}}" class="product-image">
+          <img src="assets/laptop.jpg" [alt]="product.name" class="product-image">
         </div>
         
         <mat-card-content class="card-content">
+          <div class="product-manufacturer">{{product.manufacturer}}</div>
           <mat-card-title class="product-title">{{ product.name }}</mat-card-title>
-          <div class="spacer"></div>
-          <mat-card-subtitle class="product-price">{{ product.price | currency: 'HUF' }}</mat-card-subtitle>
-          <div class="spacer"></div>
+          
+          <div class="product-specs">
+            <div class="spec-item">
+              <mat-icon>memory</mat-icon>
+              <span>{{product.processorType}}</span>
+            </div>
+            <div class="spec-item">
+              <mat-icon>developer_board</mat-icon>
+              <span>{{product.ramSize}} GB RAM</span>
+            </div>
+            <div class="spec-item">
+              <mat-icon>storage</mat-icon>
+              <span>{{product.storageCapacity}} GB {{product.storageType}}</span>
+            </div>
+            <div class="spec-item">
+              <mat-icon>desktop_windows</mat-icon>
+              <span>{{product.screenSize}}" {{product.screenResolution}}</span>
+            </div>
+          </div>
+          
+          <div class="price-container">
+            <div class="product-price">
+              {{ product.price | currency: 'HUF' }}
+            </div>
+          </div>
         </mat-card-content>
         
         <mat-card-actions class="product-actions">
-          <button mat-flat-button color="primary" (click)="viewProductDetails(product.id)">
+          <button mat-flat-button color="primary" class="action-button" (click)="viewProductDetails(product.id)">
             Részletek
+          </button>
+          <button mat-stroked-button color="primary" class="action-button">
+            <mat-icon>add_shopping_cart</mat-icon>
           </button>
         </mat-card-actions>
       </mat-card>
