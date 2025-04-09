@@ -14,6 +14,7 @@ import { MatListModule } from '@angular/material/list';
 import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 
 
 @Component({
@@ -47,6 +48,8 @@ export class ProductComponent implements OnInit {
   private storageFilterSubject = new BehaviorSubject<number[]>([]);
   private osFilterSubject = new BehaviorSubject<string[]>([]);
   private screenSizeFilterSubject = new BehaviorSubject<number[]>([]);
+  private searchFilterSubject = new BehaviorSubject<string>('');
+
 
   manufacturers: string[] = [];
   processors: string[] = [];
@@ -61,6 +64,7 @@ export class ProductComponent implements OnInit {
     private fb: FormBuilder
   ) {
     this.filterForm = this.fb.group({
+      search: [''], 
       priceMin: [null],
       priceMax: [null],
       manufacturers: [[]],
@@ -82,8 +86,16 @@ export class ProductComponent implements OnInit {
     
     this.setupFilterListeners();
     this.setupFilteredProducts();
+
+    this.filterForm.get('search')?.valueChanges.pipe(
+      debounceTime(300),
+      distinctUntilChanged()
+    ).subscribe(value => {
+      this.searchFilterSubject.next(value.toLowerCase());
+    });
     
-    // Initialize filter options after products are loaded
+    
+
     this.products$.subscribe(products => {
       this.initFilterOptions(products);
     });
@@ -147,9 +159,10 @@ export class ProductComponent implements OnInit {
       this.ramSizeFilterSubject,
       this.storageFilterSubject,
       this.osFilterSubject,
-      this.screenSizeFilterSubject
+      this.screenSizeFilterSubject,
+      this.searchFilterSubject
     ]).pipe(
-      map(([products, priceRange, manufacturers, processors, ramSizes, storageSizes, osList, screenSizes]) => {
+      map(([products, priceRange, manufacturers, processors, ramSizes, storageSizes, osList, screenSizes, searchTerm]) => {
         return products.filter(product => {
           const priceMatch = 
             (priceRange.min === null || product.price >= priceRange.min) &&
@@ -178,9 +191,16 @@ export class ProductComponent implements OnInit {
           const screenSizeMatch = 
             screenSizes.length === 0 || 
             screenSizes.includes(product.screenSize);
+
+            const searchMatch = 
+            searchTerm === '' ||
+            product.name.toLowerCase().includes(searchTerm) ||
+            product.manufacturer.toLowerCase().includes(searchTerm) ||
+            product.processorType.toLowerCase().includes(searchTerm) ||
+            product.os.toLowerCase().includes(searchTerm);
           
           return priceMatch && manufacturerMatch && processorMatch && 
-                 ramMatch && storageMatch && osMatch && screenSizeMatch;
+                 ramMatch && storageMatch && osMatch && screenSizeMatch && searchMatch;
         });
       })
     );
@@ -188,6 +208,7 @@ export class ProductComponent implements OnInit {
 
   resetFilters(): void {
     this.filterForm.reset({
+      search: '',
       priceMin: null,
       priceMax: null,
       manufacturers: [],
