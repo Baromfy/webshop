@@ -1,6 +1,6 @@
 import { Firestore, collection, collectionData } from '@angular/fire/firestore';
 import { Product } from '../models/product.model';
-import { BehaviorSubject, combineLatest, Observable } from 'rxjs';
+import { BehaviorSubject, combineLatest, Observable, of } from 'rxjs';
 import { map, switchMap } from 'rxjs/operators';
 import { Component, OnInit } from '@angular/core';
 import { CommonModule } from '@angular/common';
@@ -36,8 +36,8 @@ import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
   ]
 })
 export class ProductComponent implements OnInit {
-  products$!: Observable<Product[]>;
-  filteredProducts$!: Observable<Product[]>;
+  products$: Observable<Product[]> = of([]);
+  filteredProducts$: Observable<Product[]> = of([]);
   
   filterForm: FormGroup;
   
@@ -83,6 +83,8 @@ export class ProductComponent implements OnInit {
   ngOnInit(): void {
     const productsCollection = collection(this.firestore, 'products');
     this.products$ = collectionData(productsCollection, { idField: 'id' }) as Observable<Product[]>;
+
+    this.filteredProducts$ = this.products$;
     
     this.setupFilterListeners();
     this.setupFilteredProducts();

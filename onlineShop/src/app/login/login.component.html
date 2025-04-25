@@ -1,16 +1,43 @@
-<mat-card>
-    <h2>Bejelentkezés</h2>
-    <mat-card-content>
-        <form (submit)="onSubmit()">
-            <input type="email" [(ngModel)]="email" name="email" placeholder="Email" required />
-            <br>
-            <br>
-            <input type="password" [(ngModel)]="password" name="password" placeholder="Jelszó" required />
-            <br>
-            <br>
-            <button type="submit">Bejelentkezés</button>
-          </form>
-      <a routerLink="/register">Még nincs fiókod? Regisztrálj!</a>
-    </mat-card-content>
-  </mat-card>
+<mat-card class="split-card">
+  <div class="card-content">
+    <div class="form-section">
+      <mat-card-header>
+        <mat-card-title class="login-title">Bejelentkezés</mat-card-title>
+      </mat-card-header>
+      <mat-card-content>
+        <form (submit)="onSubmit()" class="login-form" #loginForm="ngForm">
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" [(ngModel)]="email" name="email" required>
+            <mat-icon matSuffix>email</mat-icon>
+            <mat-error *ngIf="loginForm.controls['email']?.invalid">
+              Kérjük, érvényes email címet adjon meg
+            </mat-error>
+          </mat-form-field>
 
+          <mat-form-field appearance="outline" class="form-field">
+            <mat-label>Jelszó</mat-label>
+            <input matInput type="password" [(ngModel)]="password" name="password" required>
+            <mat-icon matSuffix>lock</mat-icon>
+            <mat-error *ngIf="loginForm.controls['password']?.invalid">
+              A jelszónak legalább 6 karakter hosszúnak kell lennie
+            </mat-error>
+          </mat-form-field>
+
+          <button mat-raised-button color="primary" type="submit" class="submit-button"
+                  [disabled]="!loginForm.valid">Bejelentkezés</button>
+
+          <div class="register-link">
+            <a mat-button routerLink="/register" color="accent">
+              Még nincs fiókod? Regisztrálj!
+            </a>
+          </div>
+        </form>
+      </mat-card-content>
+    </div>
+    
+    <div class="image-section">
+      <img src="../../assets/login_page_pic.jpg" alt="Bejelentkezés" class="side-image">
+    </div>
+  </div>
+</mat-card>

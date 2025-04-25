@@ -82,7 +82,7 @@
 
   <main class="product-list">
     <div class="list-header">
-      <div [formGroup]="filterForm"> <!-- Add this wrapper -->
+      <div [formGroup]="filterForm">
         <div class="search-container">
           <mat-form-field appearance="outline" class="search-bar">
             <mat-label>Keresés termékek között</mat-label>
@@ -107,51 +107,81 @@
       </div>
     </div>
     
-    <div *ngFor="let product of filteredProducts$ | async" class="product-item">
-      <mat-card class="product-card">
-        <div class="product-image-container">
-          <img src="assets/laptop.jpg" [alt]="product.name" class="product-image">
-        </div>
-        
-        <mat-card-content class="card-content">
-          <div class="product-manufacturer">{{product.manufacturer}}</div>
-          <mat-card-title class="product-title">{{ product.name }}</mat-card-title>
-          
-          <div class="product-specs">
-            <div class="spec-item">
-              <mat-icon>memory</mat-icon>
-              <span>{{product.processorType}}</span>
-            </div>
-            <div class="spec-item">
-              <mat-icon>developer_board</mat-icon>
-              <span>{{product.ramSize}} GB RAM</span>
-            </div>
-            <div class="spec-item">
-              <mat-icon>storage</mat-icon>
-              <span>{{product.storageCapacity}} GB {{product.storageType}}</span>
-            </div>
-            <div class="spec-item">
-              <mat-icon>desktop_windows</mat-icon>
-              <span>{{product.screenSize}}" {{product.screenResolution}}</span>
-            </div>
-          </div>
-          
-          <div class="price-container">
-            <div class="product-price">
-              {{ product.price | currency: 'HUF' }}
-            </div>
-          </div>
-        </mat-card-content>
-        
-        <mat-card-actions class="product-actions">
-          <button mat-flat-button color="primary" class="action-button" (click)="viewProductDetails(product.id)">
-            Részletek
-          </button>
-          <button mat-stroked-button color="primary" class="action-button">
-            <mat-icon>add_shopping_cart</mat-icon>
-          </button>
-        </mat-card-actions>
+    <ng-container *ngIf="filteredProducts$ | async as products">
+      <div *ngIf="products.length > 0; else noResults" class="table-container">
+        <table class="products-table">
+          <thead>
+            <tr>
+              <th class="image-column">Kép</th>
+              <th class="name-column">Termék neve</th>
+              <th class="specs-column">Specifikáció</th>
+              <th class="price-column">Ár</th>
+              <th class="actions-column">Műveletek</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let product of products" class="product-row">
+              <td class="image-column">
+                <div class="product-image-container">
+                  <img src="assets/laptop.jpg" [alt]="product.name" class="product-image">
+                </div>
+              </td>
+              <td class="name-column">
+                <div class="product-manufacturer">{{product.manufacturer}}</div>
+                <div class="product-title">{{ product.name }}</div>
+              </td>
+              <td class="specs-column">
+                <div class="product-specs">
+                  <div class="spec-item">
+                    <mat-icon>memory</mat-icon>
+                    <span>{{product.processorType}}</span>
+                  </div>
+                  <div class="spec-item">
+                    <mat-icon>developer_board</mat-icon>
+                    <span>{{product.ramSize}} GB RAM</span>
+                  </div>
+                  <div class="spec-item">
+                    <mat-icon>storage</mat-icon>
+                    <span>{{product.storageCapacity}} GB {{product.storageType}}</span>
+                  </div>
+                  <div class="spec-item">
+                    <mat-icon>desktop_windows</mat-icon>
+                    <span>{{product.screenSize}}" {{product.screenResolution}}</span>
+                  </div>
+                </div>
+              </td>
+              <td class="price-column">
+                <div class="product-price">
+                  {{ product.price | currency: 'HUF' }}
+                </div>
+              </td>
+              <td class="actions-column">
+                <div class="product-actions-table">
+                  <button mat-flat-button color="primary" class="action-button" (click)="viewProductDetails(product.id)">
+                    Részletek
+                  </button>
+                  <button mat-stroked-button color="primary" class="action-button">
+                    <mat-icon>add_shopping_cart</mat-icon>
+                  </button>
+                </div>
+              </td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+  </ng-container>
+
+  <ng-template #noResults>
+    <div class="no-results-container">
+      <mat-card class="no-results-card">
+        <mat-icon class="no-results-icon">search_off</mat-icon>
+        <h3>Nincs találat</h3>
+        <p>Nem található termék a megadott szűrőfeltételek alapján</p>
+        <button mat-stroked-button color="primary" (click)="resetFilters()">
+          Szűrők törlése
+        </button>
       </mat-card>
     </div>
+  </ng-template>
   </main>
 </div>

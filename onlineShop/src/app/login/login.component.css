@@ -1,20 +1,92 @@
-mat-card {
-    max-width: 400px;
-    margin: 2em auto;
-    text-align: center;
+.split-card {
+  width: 800px;
+  max-width: 90%;
+  margin: 2rem auto;
+  padding: 0;
+  overflow: hidden;
+  border-radius: 12px;
+  box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+}
+
+.card-content {
+  display: flex;
+  height: 500px;
+}
+
+.form-section {
+  flex: 1;
+  padding: 2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.image-section {
+  flex: 1;
+  overflow: hidden;
+}
+
+.side-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.login-title {
+  font-size: 24px;
+  font-weight: 500;
+  margin-bottom: 1.5rem;
+  text-align: center;
+  color: #3f51b5;
+}
+
+.login-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-field {
+  width: 100%;
+}
+
+.form-field .mat-icon {
+  color: rgba(0, 0, 0, 0.54);
+}
+
+.submit-button {
+  padding: 10px 0;
+  font-size: 16px;
+  font-weight: 500;
+  letter-spacing: 0.5px;
+  height: 48px;
+  border-radius: 8px;
+  margin-top: 0.5rem;
+}
+
+.register-link {
+  text-align: center;
+  margin-top: 1rem;
+}
+
+.register-link a {
+  text-decoration: none;
+  font-weight: 500;
+}
+
+/* Reszponzív stílusok */
+@media (max-width: 768px) {
+  .card-content {
+    flex-direction: column;
+    height: auto;
   }
   
-  mat-form-field {
-    display: block;
-  }
-  .link {
-    display: block;
-    margin-top: 10px;
-    text-align: center;
-    color: #007bff;
-    text-decoration: none;
-  }
-  .link:hover {
-    text-decoration: underline;
+  .image-section {
+    display: none;
   }
   
+  .split-card {
+    width: 100%;
+    max-width: 420px;
+  }
+}
