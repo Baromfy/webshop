@@ -8,7 +8,7 @@
           Szűrők törlése
         </button>
       </div>
-      
+
       <div class="filter-group">
         <h4>Ár tartomány (HUF)</h4>
         <div class="price-range">
@@ -16,7 +16,7 @@
             <mat-label>Minimum ár</mat-label>
             <input matInput type="number" formControlName="priceMin" placeholder="0">
           </mat-form-field>
-          
+
           <mat-form-field appearance="outline">
             <mat-label>Maximum ár</mat-label>
             <input matInput type="number" formControlName="priceMax" placeholder="Max">
@@ -41,7 +41,7 @@
           </mat-list-option>
         </mat-selection-list>
       </div>
-      
+
       <div class="filter-group">
         <h4>RAM méret (GB)</h4>
         <mat-selection-list formControlName="ramSizes">
@@ -50,7 +50,7 @@
           </mat-list-option>
         </mat-selection-list>
       </div>
-      
+
       <div class="filter-group">
         <h4>Tárhely méret (GB)</h4>
         <mat-selection-list formControlName="storageSizes">
@@ -59,7 +59,7 @@
           </mat-list-option>
         </mat-selection-list>
       </div>
-      
+
       <div class="filter-group">
         <h4>Operációs rendszer</h4>
         <mat-selection-list formControlName="osList">
@@ -68,7 +68,7 @@
           </mat-list-option>
         </mat-selection-list>
       </div>
-      
+
       <div class="filter-group">
         <h4>Képernyő méret (inch)</h4>
         <mat-selection-list formControlName="screenSizes">
@@ -106,7 +106,7 @@
         </mat-form-field>
       </div>
     </div>
-    
+
     <ng-container *ngIf="filteredProducts$ | async as products">
       <div *ngIf="products.length > 0; else noResults" class="table-container">
         <table class="products-table">
@@ -157,10 +157,11 @@
               </td>
               <td class="actions-column">
                 <div class="product-actions-table">
-                  <button mat-flat-button color="primary" class="action-button" (click)="viewProductDetails(product.id)">
+                  <button mat-flat-button color="primary" class="action-button"
+                    (click)="viewProductDetails(product.id)">
                     Részletek
                   </button>
-                  <button mat-stroked-button color="primary" class="action-button">
+                  <button mat-stroked-button color="primary" class="action-button" (click)="addToCart(product.id)">
                     <mat-icon>add_shopping_cart</mat-icon>
                   </button>
                 </div>
@@ -169,19 +170,19 @@
           </tbody>
         </table>
       </div>
-  </ng-container>
+    </ng-container>
 
-  <ng-template #noResults>
-    <div class="no-results-container">
-      <mat-card class="no-results-card">
-        <mat-icon class="no-results-icon">search_off</mat-icon>
-        <h3>Nincs találat</h3>
-        <p>Nem található termék a megadott szűrőfeltételek alapján</p>
-        <button mat-stroked-button color="primary" (click)="resetFilters()">
-          Szűrők törlése
-        </button>
-      </mat-card>
-    </div>
-  </ng-template>
+    <ng-template #noResults>
+      <div class="no-results-container">
+        <mat-card class="no-results-card">
+          <mat-icon class="no-results-icon">search_off</mat-icon>
+          <h3>Nincs találat</h3>
+          <p>Nem található termék a megadott szűrőfeltételek alapján</p>
+          <button mat-stroked-button color="primary" (click)="resetFilters()">
+            Szűrők törlése
+          </button>
+        </mat-card>
+      </div>
+    </ng-template>
   </main>
 </div>

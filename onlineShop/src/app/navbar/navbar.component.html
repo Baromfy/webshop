@@ -4,6 +4,11 @@
       </button>
     <span class="spacer"></span>
 
+    <button mat-button *ngIf="authService.loggedIn | async" routerLink="/cart">
+      Kosár megtekintése
+    </button>
+  <span class="spacer"></span>
+
     <button mat-button *ngIf="authService.isAdmin$  | async" routerLink="/uploadProducts">
         Termékek feltöltése
       </button>

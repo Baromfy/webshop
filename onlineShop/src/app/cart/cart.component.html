@@ -1,0 +1,117 @@
+<div class="cart-container" *ngIf="userId">
+  <h2>Kosár tartalma</h2>
+
+  <div *ngIf="!isLoading && cartItems.length === 0" class="empty-cart">
+    <mat-card class="no-results-card">
+      <mat-icon class="no-results-icon">shopping_cart</mat-icon>
+      <h3>A kosarad üres</h3>
+      <p>Még nem adtál hozzá termékeket a kosaradhoz</p>
+      <button mat-stroked-button color="primary" routerLink="/products">
+        Termékek böngészése
+      </button>
+    </mat-card>
+  </div>
+
+
+  <div *ngIf="!isLoading && cartItems.length > 0" class="table-container">
+    <table class="products-table">
+      <thead>
+        <tr>
+          <th class="image-column">Kép</th>
+          <th class="name-column">Termék neve</th>
+          <th class="specs-column">Specifikáció</th>
+          <th class="price-column">Ár</th>
+          <th class="quantity-column">Mennyiség</th>
+          <th class="total-column">Összesen</th>
+          <th class="actions-column">Műveletek</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let item of cartItems" class="product-row">
+          <td class="image-column">
+            <div class="product-image-container">
+              <img [src]="item.imageUrl || 'assets/laptop.jpg'" [alt]="item.name" class="product-image">
+            </div>
+          </td>
+          <td class="name-column">
+            <div class="product-manufacturer">{{item.manufacturer}}</div>
+            <div class="product-title">{{ item.name }}</div>
+          </td>
+          <td class="specs-column">
+            <div class="product-specs">
+              <div class="spec-item">
+                <mat-icon>memory</mat-icon>
+                <span>{{item.processorType}}</span>
+              </div>
+              <div class="spec-item">
+                <mat-icon>developer_board</mat-icon>
+                <span>{{item.ramSize}} GB RAM</span>
+              </div>
+              <div class="spec-item">
+                <mat-icon>storage</mat-icon>
+                <span>{{item.storageCapacity}} GB {{item.storageType}}</span>
+              </div>
+            </div>
+          </td>
+          <td class="price-column">
+            <div class="product-price">
+              {{ item.price | currency:'HUF':'symbol':'1.0-0' }}
+            </div>
+          </td>
+          <td class="quantity-column">
+            <div class="quantity-control">
+              <button mat-icon-button (click)="updateQuantity(item.id, item.quantity - 1)">
+                <mat-icon>remove</mat-icon>
+              </button>
+              <span class="quantity-value">{{item.quantity}}</span>
+              <button mat-icon-button (click)="updateQuantity(item.id, item.quantity + 1)">
+                <mat-icon>add</mat-icon>
+              </button>
+            </div>
+          </td>
+          <td class="total-column">
+            <div class="product-price">
+              {{ (item.price * item.quantity) | currency:'HUF':'symbol':'1.0-0' }}
+            </div>
+          </td>
+          <td class="actions-column">
+            <button mat-icon-button color="warn" (click)="removeItem(item.id)">
+              <mat-icon>delete</mat-icon>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="cart-summary">
+      <div class="summary-details">
+        <div class="summary-row">
+          <span>Összesen:</span>
+          <span class="summary-value">{{getTotal() | currency:'HUF':'symbol':'1.0-0'}}</span>
+        </div>
+        <div class="summary-row">
+          <span>Szállítás:</span>
+          <span class="summary-value">0 Ft</span>
+        </div>
+        <div class="summary-row total">
+          <span>Végösszeg:</span>
+          <span class="summary-value">{{getTotal() | currency:'HUF':'symbol':'1.0-0'}}</span>
+        </div>
+      </div>
+      <button mat-flat-button color="primary" class="checkout-btn" routerLink="/checkout">
+        Tovább a fizetéshez
+      </button>
+    </div>
+  </div>
+</div>
+
+<div *ngIf="!userId" class="login-prompt">
+  <mat-card class="no-results-card">
+    <mat-icon class="no-results-icon">lock</mat-icon>
+    <h3>Bejelentkezés szükséges</h3>
+    <p>A kosár megtekintéséhez jelentkezz be!</p>
+    <button mat-flat-button color="primary" routerLink="/login">
+      Bejelentkezés
+    </button>
+  </mat-card>
+</div>

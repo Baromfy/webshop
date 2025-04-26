@@ -12,17 +12,31 @@ export class AuthService {
 
   private isAdminSubject = new BehaviorSubject<boolean | null>(null);
   isAdmin$ = this.isAdminSubject.asObservable();
+  currentUserId: string | null = null;
+  currentUser$ = this.loggedIn.asObservable();
 
   constructor(private auth: Auth, private firestore: Firestore) {
     onAuthStateChanged(this.auth, (user) => {
       this.loggedIn.next(!!user);
       if (user) {
+        this.currentUserId = user.uid;
         this.loadAdminStatus(user.uid);
       } else {
+        this.currentUserId = null;
         this.isAdminSubject.next(null);
       }
     });
    }
+
+   getId() {
+    const user = this.auth.currentUser;
+    if (user) {
+      this.currentUserId = user.uid;
+      return user.uid;
+    } else {
+      return null;
+    }
+  }
 
    private async loadAdminStatus(uid: string) {
     const userDoc = doc(this.firestore, `users/${uid}`);

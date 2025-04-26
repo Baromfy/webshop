@@ -15,6 +15,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatInputModule } from '@angular/material/input';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
+import { CartService } from '../cart.service';
 
 
 @Component({
@@ -61,7 +62,8 @@ export class ProductComponent implements OnInit {
   constructor(
     private firestore: Firestore,
     private router: Router,
-    private fb: FormBuilder
+    private fb: FormBuilder,
+    private cartService: CartService
   ) {
     this.filterForm = this.fb.group({
       search: [''], 
@@ -219,6 +221,18 @@ export class ProductComponent implements OnInit {
       storageSizes: [],
       osList: [],
       screenSizes: []
+    });
+  }
+
+  addToCart(productId: string) {
+    this.cartService.addToCart(productId).subscribe({
+      next: () => {
+        window.alert('A termék sikeresen hozzáadva a kosárhoz!');
+      },
+      error: (error: Error) => {
+        console.error('Hiba a kosárhoz adás közben:', error);
+        window.alert('Hiba történt a kosárhoz adás során. Kérjük, jelentkezzen be, vagy próbálja újra később!');
+      }
     });
   }
 }

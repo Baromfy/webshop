@@ -21,4 +21,5 @@ export interface Product {
   usb32Ports: number;
   usbTypeCPorts: number;
   productFamily: string;
+  imageUrl?: string;
 }
