@@ -1,0 +1,81 @@
+<div class="favorites-container" *ngIf="userId">
+    <h2>Kedvenc termékeim</h2>
+  
+    <div *ngIf="favorites.length === 0" class="empty-favorites">
+      <mat-card class="no-results-card">
+        <mat-icon class="no-results-icon">favorite_border</mat-icon>
+        <h3>Nincsenek kedvenc termékeid</h3>
+        <p>Még nem jelöltél meg kedvencnek termékeket</p>
+        <button mat-stroked-button color="primary" routerLink="/products">
+          Termékek böngészése
+        </button>
+      </mat-card>
+    </div>
+  
+    <div *ngIf="favorites.length > 0" class="table-container">
+      <table class="products-table">
+        <thead>
+          <tr>
+            <th class="image-column">Kép</th>
+            <th class="name-column">Termék neve</th>
+            <th class="specs-column">Specifikáció</th>
+            <th class="price-column">Ár</th>
+            <th class="actions-column">Műveletek</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let item of favorites" class="product-row">
+            <td class="image-column">
+              <div class="product-image-container">
+                <img [src]="item.product.imageUrl || 'assets/laptop.jpg'" [alt]="item.product.name" class="product-image">
+              </div>
+            </td>
+            <td class="name-column">
+              <div class="product-manufacturer">{{item.product.manufacturer}}</div>
+              <div class="product-title">{{ item.product.name }}</div>
+            </td>
+            <td class="specs-column">
+              <div class="product-specs">
+                <div class="spec-item">
+                  <mat-icon>memory</mat-icon>
+                  <span>{{item.product.processorType}}</span>
+                </div>
+                <div class="spec-item">
+                  <mat-icon>developer_board</mat-icon>
+                  <span>{{item.product.ramSize}} GB RAM</span>
+                </div>
+                <div class="spec-item">
+                  <mat-icon>storage</mat-icon>
+                  <span>{{item.product.storageCapacity}} GB {{item.product.storageType}}</span>
+                </div>
+              </div>
+            </td>
+            <td class="price-column">
+              <div class="product-price">
+                {{ item.product.price | currency:'HUF':'symbol':'1.0-0' }}
+              </div>
+            </td>
+            <td class="actions-column">
+              <button mat-icon-button color="primary" (click)="viewProductDetails(item.product.id)">
+                <mat-icon>visibility</mat-icon>
+              </button>
+              <button mat-icon-button color="warn" (click)="removeFavorite(item.favorite.id)">
+                <mat-icon>delete</mat-icon>
+              </button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+  
+  <div *ngIf="!userId" class="login-prompt">
+    <mat-card class="no-results-card">
+      <mat-icon class="no-results-icon">lock</mat-icon>
+      <h3>Bejelentkezés szükséges</h3>
+      <p>A kedvencek megtekintéséhez jelentkezz be!</p>
+      <button mat-flat-button color="primary" routerLink="/login">
+        Bejelentkezés
+      </button>
+    </mat-card>
+  </div>

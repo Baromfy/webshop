@@ -17,7 +17,12 @@
       Bejelentkezés
     </button>
     
-    <button mat-button *ngIf="authService.loggedIn | async" (click)="authService.logout()">
-      Kijelentkezés
+    <button mat-button *ngIf="authService.loggedIn | async" [matMenuTriggerFor]="profil">
+      Profil
     </button>
+    <mat-menu #profil="matMenu">
+      <button mat-menu-item>Korábbi rendelések</button>
+      <button mat-menu-item routerLink="/favouriteProduct">Kedvenceim megtekintése</button>
+      <button mat-menu-item (click)="authService.logout()">Kijelentkezés</button>
+    </mat-menu>
 </mat-toolbar>

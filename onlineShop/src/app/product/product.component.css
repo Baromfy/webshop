@@ -140,7 +140,7 @@ mat-selection-list {
 .list-header {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: baseline;
   margin-bottom: 25px;
   grid-column: 1 / -1;
 }

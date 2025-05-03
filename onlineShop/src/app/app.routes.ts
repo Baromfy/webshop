@@ -5,6 +5,7 @@ import { RegisterComponent } from './register/register.component';
 import { ProductDetailComponent } from './product-detail/product-detail.component';
 import { UploadNewProductsComponent } from './upload-new-products/upload-new-products.component';
 import { CartComponent } from './cart/cart.component';
+import { FavouriteProductComponent } from './favourite-product/favourite-product.component';
 
 export const routes: Routes = [
   { path: 'detail/:id', component: ProductDetailComponent },
@@ -13,5 +14,6 @@ export const routes: Routes = [
   { path: 'register', component: RegisterComponent },
   { path: 'uploadProducts', component: UploadNewProductsComponent },
   { path: 'cart', component: CartComponent },
+  { path: 'favouriteProduct', component: FavouriteProductComponent },
   { path: '**', redirectTo: '' }
 ];

@@ -111,9 +111,13 @@
   </div>
 
   <div class="product-actions">
-    <button mat-raised-button color="primary">Kosárba</button>
+    <button mat-raised-button color="primary" (click)="addToCart()">Kosárba</button>
     <button mat-button [routerLink]="['/']">Vissza a termékekhez</button>
-  </div>
+    <button mat-button 
+            (click)="toggleFavorite()"
+            [color]="isFavorite ? 'warn' : 'primary'">
+      {{ isFavorite ? 'Kedvencekből eltávolítás' : 'Kedvencekhez adás' }}
+    </button>
 </div>
 
 <div class="loading-container" *ngIf="!product">
