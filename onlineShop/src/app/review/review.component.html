@@ -1,0 +1,25 @@
+<div class="reviews-container">
+    <h3>Értékelések ({{reviews.length}})</h3>
+    
+    <div *ngIf="reviews.length === 0" class="no-reviews">
+      <p>Még nincsenek értékelések ehhez a termékhez.</p>
+    </div>
+  
+    <div *ngFor="let review of reviews" class="review-card">
+      <mat-card>
+        <mat-card-header>
+          <div mat-card-avatar class="review-avatar">{{review.userName?.charAt(0)}}</div>
+          <mat-card-title>{{review.userName}}</mat-card-title>
+          <mat-card-subtitle>
+            <span class="rating-stars">
+              <mat-icon *ngFor="let star of [1,2,3,4,5]" [class.filled]="star <= review.rating">star</mat-icon>
+            </span>
+            {{review.createdAt?.toDate() | date:'yyyy. MM. dd.'}}
+          </mat-card-subtitle>
+        </mat-card-header>
+        <mat-card-content>
+          <p>{{review.comment}}</p>
+        </mat-card-content>
+      </mat-card>
+    </div>
+  </div>

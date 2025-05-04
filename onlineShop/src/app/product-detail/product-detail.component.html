@@ -118,7 +118,14 @@
             [color]="isFavorite ? 'warn' : 'primary'">
       {{ isFavorite ? 'Kedvencekből eltávolítás' : 'Kedvencekhez adás' }}
     </button>
-</div>
+  </div>
+
+  <app-review-form 
+    [productId]="productId"
+    (reviewAdded)="loadReviews()">
+  </app-review-form>
+
+  <app-review-list [productId]="productId"></app-review-list>
 
 <div class="loading-container" *ngIf="!product">
   <p>Termék betöltése...</p>

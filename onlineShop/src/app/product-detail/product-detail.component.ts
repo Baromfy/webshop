@@ -8,11 +8,14 @@ import { MatButtonModule } from '@angular/material/button';
 import { CurrencyPipe } from '@angular/common';
 import { Auth, onAuthStateChanged } from '@angular/fire/auth';
 import { MatSnackBar, MatSnackBarModule } from '@angular/material/snack-bar';
+import { ReviewFormComponent } from "../review-form/review-form.component";
+import { ReviewListComponent } from "../review/review.component";
+import { ReviewService } from '../review.service';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [CommonModule, RouterModule, MatButtonModule, CurrencyPipe, MatSnackBarModule],
+  imports: [CommonModule, RouterModule, MatButtonModule, CurrencyPipe, MatSnackBarModule, ReviewFormComponent, ReviewListComponent],
   templateUrl: './product-detail.component.html',
   styleUrls: ['./product-detail.component.css']
 })
@@ -20,12 +23,17 @@ export class ProductDetailComponent implements OnInit {
   product: Product | undefined;
   currentUserId: string | null = null;
   isFavorite = false;
+  
+  get productId(): string {
+    return this.product?.id || '';
+  }
 
   constructor(
     private route: ActivatedRoute,
     private firestore: Firestore,
     private auth: Auth,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private reviewService: ReviewService
   ) {}
 
   async ngOnInit() {
@@ -101,5 +109,11 @@ export class ProductDetailComponent implements OnInit {
 
   addToCart() {
     console.log('Product added to cart:', this.product);
+  }
+
+  loadReviews() {
+    // This method is called when a new review is added
+    // The ReviewListComponent handles loading the reviews internally
+    console.log('Reloading reviews for product:', this.product?.id);
   }
 }

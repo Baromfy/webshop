@@ -1,0 +1,51 @@
+/* Általános stílusok */
+.reviews-container, .review-form {
+    margin: 2rem 0;
+    max-width: 800px;
+  }
+  
+  /* Értékelési kártyák */
+  .review-card {
+    margin-bottom: 1.5rem;
+  }
+  
+  .review-avatar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    background-color: #3f51b5;
+    color: white;
+    font-weight: bold;
+  }
+  
+  /* Csillag értékelés */
+  .rating-stars {
+    display: inline-flex;
+    align-items: center;
+  }
+  
+  .rating-stars mat-icon {
+    color: #ffb400;
+    width: 20px;
+    height: 20px;
+    font-size: 20px;
+  }
+  
+  .rating-selector mat-icon {
+    cursor: pointer;
+    font-size: 2rem;
+    color: #ccc;
+  }
+  
+  .rating-selector mat-icon.filled {
+    color: #ffb400;
+  }
+  
+  /* Form stílusok */
+  .full-width {
+    width: 100%;
+    margin-bottom: 1rem;
+  }
