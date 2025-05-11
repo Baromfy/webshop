@@ -112,8 +112,6 @@ export class ProductDetailComponent implements OnInit {
   }
 
   loadReviews() {
-    // This method is called when a new review is added
-    // The ReviewListComponent handles loading the reviews internally
     console.log('Reloading reviews for product:', this.product?.id);
   }
 }

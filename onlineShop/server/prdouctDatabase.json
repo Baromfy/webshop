@@ -1,0 +1,1877 @@
+{
+    "meta": {
+      "version": "1.0",
+      "last_updated": "2023-11-15",
+      "product_count": 30,
+      "data_source": "Laptop Store Database"
+    },
+    "products": [
+      {
+        "id": 1,
+        "name": "Apple MacBook Pro 14 (M3 Pro)",
+        "price": 2499,
+        "currency": "USD",
+        "brand": "Apple",
+        "category": ["premium", "professional", "creative"],
+        "operating_system": "macOS",
+        "specs": {
+          "processor": {
+            "type": "Apple M3 Pro",
+            "cores": 12,
+            "speed": "3.7 GHz"
+          },
+          "memory": {
+            "size": 18,
+            "type": "LPDDR5",
+            "upgradable": false
+          },
+          "storage": {
+            "capacity": 512,
+            "type": "SSD",
+            "upgradable": false
+          },
+          "display": {
+            "size": 14.2,
+            "resolution": "3024x1964",
+            "technology": "Liquid Retina XDR",
+            "refresh_rate": 120,
+            "color_accuracy": "P3 wide color"
+          },
+          "graphics": {
+            "type": "Apple M3 Pro 18-core",
+            "memory": "Shared"
+          },
+          "battery": {
+            "capacity": "70Wh",
+            "life": "Up to 18 hours"
+          },
+          "weight": 1.61,
+          "dimensions": "312.5 x 221.2 x 15.5 mm",
+          "ports": {
+            "usb_type_c": 3,
+            "thunderbolt": 3,
+            "hdmi": false,
+            "sd_card": false,
+            "headphone_jack": true
+          },
+          "wireless": {
+            "wifi": "Wi-Fi 6E",
+            "bluetooth": "5.3"
+          }
+        },
+        "description": "Professional-grade MacBook Pro with M3 Pro chip featuring 12-core CPU and 18-core GPU, stunning Liquid Retina XDR display with ProMotion technology, and industry-leading battery life for creative professionals.",
+        "tags": ["apple", "pro", "retina", "creative", "long-battery", "silicon"],
+        "warranty": "1 year limited",
+        "release_date": "2023-10-30"
+      },
+      {
+        "id": 2,
+        "name": "Dell XPS 15 (9520)",
+        "price": 1899,
+        "currency": "USD",
+        "brand": "Dell",
+        "category": ["premium", "business", "performance"],
+        "operating_system": "Windows 11 Pro",
+        "specs": {
+          "processor": {
+            "type": "Intel Core i7-12700H",
+            "cores": 14,
+            "speed": "2.3 GHz (up to 4.7 GHz)"
+          },
+          "memory": {
+            "size": 16,
+            "type": "DDR5",
+            "upgradable": true,
+            "max_capacity": 64
+          },
+          "storage": {
+            "capacity": 512,
+            "type": "NVMe SSD",
+            "upgradable": true,
+            "max_capacity": 8000
+          },
+          "display": {
+            "size": 15.6,
+            "resolution": "3840x2400",
+            "technology": "4K UHD+ Touch",
+            "refresh_rate": 60,
+            "color_accuracy": "100% AdobeRGB"
+          },
+          "graphics": {
+            "type": "NVIDIA GeForce RTX 3050",
+            "memory": 4,
+            "max_power": "40W"
+          },
+          "battery": {
+            "capacity": "86Wh",
+            "life": "Up to 8 hours",
+            "fast_charge": "80% in 60 minutes"
+          },
+          "weight": 1.92,
+          "dimensions": "344.4 x 230.1 x 18 mm",
+          "ports": {
+            "usb_type_c": 2,
+            "usb_type_a": 1,
+            "thunderbolt": 2,
+            "hdmi": false,
+            "sd_card": true,
+            "headphone_jack": true
+          },
+          "wireless": {
+            "wifi": "Wi-Fi 6",
+            "bluetooth": "5.2"
+          },
+          "security": {
+            "fingerprint": true,
+            "windows_hello": true
+          }
+        },
+        "description": "Premium Windows laptop featuring 14-core Intel processor, 4K InfinityEdge touch display with 100% AdobeRGB coverage, and professional-grade CNC machined aluminum chassis with carbon fiber palm rest.",
+        "tags": ["dell", "xps", "4k", "business", "powerful", "touchscreen"],
+        "warranty": "1 year premium support",
+        "release_date": "2022-04-05"
+      },
+      {
+        "id": 3,
+        "name": "Asus ROG Zephyrus G14",
+        "price": 1599,
+        "currency": "USD",
+        "brand": "Asus",
+        "category": ["gaming", "performance", "portable"],
+        "operating_system": "Windows 11 Home",
+        "specs": {
+          "processor": {
+            "type": "AMD Ryzen 9 7940HS",
+            "cores": 8,
+            "speed": "4.0 GHz (up to 5.2 GHz)"
+          },
+          "memory": {
+            "size": 16,
+            "type": "DDR5",
+            "upgradable": true,
+            "max_capacity": 32
+          },
+          "storage": {
+            "capacity": 1000,
+            "type": "PCIe 4.0 SSD",
+            "upgradable": true,
+            "max_capacity": 4000
+          },
+          "display": {
+            "size": 14,
+            "resolution": "2560x1600",
+            "technology": "IPS-level",
+            "refresh_rate": 165,
+            "response_time": "3ms",
+            "color_accuracy": "100% DCI-P3"
+          },
+          "graphics": {
+            "type": "NVIDIA GeForce RTX 4060",
+            "memory": 8,
+            "max_power": "100W"
+          },
+          "cooling": {
+            "system": "Arc Flow fans",
+            "heat_pipes": 5,
+            "liquid_metal": true
+          },
+          "battery": {
+            "capacity": "76Wh",
+            "life": "Up to 10 hours (video playback)"
+          },
+          "weight": 1.72,
+          "dimensions": "312 x 227 x 19.5 mm",
+          "ports": {
+            "usb_type_c": 1,
+            "usb_type_a": 2,
+            "hdmi": 1,
+            "display_port": true,
+            "headphone_jack": true
+          },
+          "keyboard": {
+            "type": "RGB backlit",
+            "travel": 1.7,
+            "numpad": false
+          }
+        },
+        "description": "Ultra-portable gaming laptop featuring AMD Ryzen 9 processor and RTX 4060 GPU with 100W TGP, 165Hz QHD display with 3ms response time, and innovative AniMe Matrix LED lid display in a compact 14-inch magnesium alloy chassis.",
+        "tags": ["gaming", "rog", "amd", "rtx", "portable", "qhd"],
+        "warranty": "2 years global",
+        "release_date": "2023-02-15"
+      },
+      {
+        "id": 4,
+        "name": "Lenovo ThinkPad X1 Carbon Gen 10",
+        "price": 1799,
+        "currency": "USD",
+        "brand": "Lenovo",
+        "category": ["business", "ultrabook", "premium"],
+        "operating_system": "Windows 11 Pro",
+        "specs": {
+          "processor": {
+            "type": "Intel Core i7-1260P",
+            "cores": 12,
+            "speed": "2.1 GHz (up to 4.7 GHz)"
+          },
+          "memory": {
+            "size": 16,
+            "type": "LPDDR5",
+            "upgradable": false
+          },
+          "storage": {
+            "capacity": 512,
+            "type": "PCIe SSD",
+            "upgradable": true
+          },
+          "display": {
+            "size": 14,
+            "resolution": "2560x1600",
+            "technology": "IPS Low Power",
+            "refresh_rate": 60,
+            "brightness": "400 nits"
+          },
+          "graphics": {
+            "type": "Intel Iris Xe",
+            "memory": "Shared"
+          },
+          "durability": {
+            "military_grade": "MIL-STD-810H",
+            "spill_resistant": true
+          },
+          "battery": {
+            "capacity": "57Wh",
+            "life": "Up to 15 hours",
+            "rapid_charge": "80% in 60 minutes"
+          },
+          "weight": 1.12,
+          "dimensions": "315.6 x 222.5 x 15.36 mm",
+          "ports": {
+            "usb_type_c": 2,
+            "usb_type_a": 2,
+            "hdmi": 1,
+            "headphone_jack": true
+          },
+          "security": {
+            "fingerprint": true,
+            "ir_camera": true,
+            "dTPM": true
+          }
+        },
+        "description": "Legendary business ultrabook featuring military-grade durability, best-in-class keyboard with 1.5mm travel, and Intel Evo certification for premium performance and responsiveness in a lightweight carbon fiber chassis.",
+        "tags": ["thinkpad", "business", "durable", "lightweight", "evo"],
+        "warranty": "3 years onsite",
+        "release_date": "2022-06-01"
+      },
+      {
+        "id": 5,
+        "name": "HP Spectre x360 14",
+        "price": 1699,
+        "currency": "USD",
+        "brand": "HP",
+        "category": ["convertible", "premium", "business"],
+        "operating_system": "Windows 11 Home",
+        "specs": {
+          "processor": {
+            "type": "Intel Core i7-1255U",
+            "cores": 10,
+            "speed": "1.7 GHz (up to 4.7 GHz)"
+          },
+          "memory": {
+            "size": 16,
+            "type": "LPDDR4x",
+            "upgradable": false
+          },
+          "storage": {
+            "capacity": 1024,
+            "type": "PCIe NVMe SSD",
+            "upgradable": false
+          },
+          "display": {
+            "size": 13.5,
+            "resolution": "3000x2000",
+            "technology": "OLED Touch",
+            "refresh_rate": 60,
+            "brightness": "400 nits"
+          },
+          "graphics": {
+            "type": "Intel Iris Xe",
+            "memory": "Shared"
+          },
+          "battery": {
+            "capacity": "66Wh",
+            "life": "Up to 12 hours"
+          },
+          "weight": 1.37,
+          "dimensions": "298 x 220.4 x 16.8 mm",
+          "ports": {
+            "usb_type_c": 2,
+            "usb_type_a": 1,
+            "microSD": true,
+            "headphone_jack": true
+          },
+          "stylus": {
+            "included": true,
+            "technology": "Tilt support"
+          }
+        },
+        "description": "Premium 2-in-1 convertible laptop with stunning OLED touch display featuring 100% DCI-P3 color gamut, gem-cut aluminum design with angular edges, and included HP Rechargeable MPP2.0 Tilt Pen for creative work.",
+        "tags": ["convertible", "touchscreen", "oled", "stylish", "2-in-1"],
+        "warranty": "1 year limited",
+        "release_date": "2022-10-15"
+      },
+      {
+        "id": 6,
+        "name": "Microsoft Surface Laptop 5",
+        "price": 1299,
+        "currency": "USD",
+        "brand": "Microsoft",
+        "category": ["ultrabook", "business", "premium"],
+        "operating_system": "Windows 11 Home",
+        "specs": {
+          "processor": {
+            "type": "Intel Core i7-1255U",
+            "cores": 10,
+            "speed": "1.7 GHz (up to 4.7 GHz)"
+          },
+          "memory": {
+            "size": 16,
+            "type": "LPDDR5x",
+            "upgradable": false
+          },
+          "storage": {
+            "capacity": 512,
+            "type": "NVMe SSD",
+            "upgradable": false
+          },
+          "display": {
+            "size": 13.5,
+            "resolution": "2256x1504",
+            "technology": "PixelSense Touch",
+            "refresh_rate": 60,
+            "aspect_ratio": "3:2"
+          },
+          "graphics": {
+            "type": "Intel Iris Xe",
+            "memory": "Shared"
+          },
+          "battery": {
+            "capacity": "47.4Wh",
+            "life": "Up to 18 hours"
+          },
+          "weight": 1.29,
+          "dimensions": "308 x 223 x 14.5 mm",
+          "ports": {
+            "usb_type_c": 1,
+            "usb_type_a": 1,
+            "surface_connect": true,
+            "headphone_jack": true
+          },
+          "keyboard": {
+            "material": "Alcantara",
+            "backlit": true
+          }
+        },
+        "description": "Sleek and minimalist Windows laptop with premium build quality, optimized for Windows 11 with PixelSense touch display in 3:2 aspect ratio, featuring Alcantara fabric-covered keyboard deck for premium feel.",
+        "tags": ["surface", "windows", "premium", "thin", "alcantara"],
+        "warranty": "1 year limited",
+        "release_date": "2022-10-25"
+      },
+      {
+        "id": 7,
+        "name": "Acer Swift X SFX14-41G",
+        "price": 1099,
+        "currency": "USD",
+        "brand": "Acer",
+        "category": ["performance", "budget", "creator"],
+        "operating_system": "Windows 11 Home",
+        "specs": {
+          "processor": {
+            "type": "AMD Ryzen 7 5800U",
+            "cores": 8,
+            "speed": "1.9 GHz (up to 4.4 GHz)"
+          },
+          "memory": {
+            "size": 16,
+            "type": "LPDDR4x",
+            "upgradable": false
+          },
+          "storage": {
+            "capacity": 512,
+            "type": "NVMe SSD",
+            "upgradable": true
+          },
+          "display": {
+            "size": 14,
+            "resolution": "1920x1080",
+            "technology": "IPS",
+            "refresh_rate": 60,
+            "brightness": "300 nits"
+          },
+          "graphics": {
+            "type": "NVIDIA GeForce RTX 3050 Ti",
+            "memory": 4,
+            "max_power": "40W"
+          },
+          "battery": {
+            "capacity": "59Wh",
+            "life": "Up to 8 hours"
+          },
+          "weight": 1.39,
+          "dimensions": "320.4 x 216 x 17.9 mm",
+          "ports": {
+            "usb_type_c": 1,
+            "usb_type_a": 2,
+            "hdmi": 1,
+            "headphone_jack": true
+          }
+        },
+        "description": "Affordable performance laptop combining 8-core AMD Ryzen processor with RTX 3050 Ti graphics in a portable 14-inch chassis, offering excellent value for content creators and moderate gamers.",
+        "tags": ["budget", "rtx", "amd", "value", "creator"],
+        "warranty": "1 year international",
+        "release_date": "2021-06-10"
+      },
+      {
+        "id": 8,
+        "name": "Razer Blade 15",
+        "price": 2499,
+        "currency": "USD",
+        "brand": "Razer",
+        "category": ["gaming", "performance", "premium"],
+        "operating_system": "Windows 11 Home",
+        "specs": {
+          "processor": {
+            "type": "Intel Core i7-12800H",
+            "cores": 14,
+            "speed": "2.4 GHz (up to 4.8 GHz)"
+          },
+          "memory": {
+            "size": 16,
+            "type": "DDR5",
+            "upgradable": true,
+            "max_capacity": 64
+          },
+          "storage": {
+            "capacity": 1000,
+            "type": "PCIe 4.0 SSD",
+            "upgradable": true,
+            "max_capacity": 4000
+          },
+          "display": {
+            "size": 15.6,
+            "resolution": "2560x1440",
+            "technology": "IPS",
+            "refresh_rate": 240,
+            "response_time": "2ms"
+          },
+          "graphics": {
+            "type": "NVIDIA GeForce RTX 3070 Ti",
+            "memory": 8,
+            "max_power": "130W"
+          },
+          "cooling": {
+            "system": "Vapor chamber",
+            "fans": 2
+          },
+          "battery": {
+            "capacity": "80Wh",
+            "life": "Up to 6 hours"
+          },
+          "weight": 2.01,
+          "dimensions": "355 x 235 x 16.99 mm",
+          "ports": {
+            "usb_type_c": 1,
+            "usb_type_a": 3,
+            "hdmi": 1,
+            "thunderbolt": 1,
+            "headphone_jack": true
+          },
+          "keyboard": {
+            "type": "RGB per-key",
+            "travel": 1.0,
+            "anti_ghosting": true
+          }
+        },
+        "description": "Premium gaming laptop with CNC aluminum chassis, QHD 240Hz display with 2ms response time, and powerful RTX 3070 Ti graphics, featuring Razer Chroma RGB lighting and advanced vapor chamber cooling.",
+        "tags": ["razer", "gaming", "rgb", "high-end", "qhd"],
+        "warranty": "1 year limited",
+        "release_date": "2022-05-15"
+      },
+      {
+        "id": 9,
+        "name": "LG Gram 17",
+        "price": 1699,
+        "currency": "USD",
+        "brand": "LG",
+        "category": ["ultrabook", "lightweight", "productivity"],
+        "operating_system": "Windows 11 Home",
+        "specs": {
+          "processor": {
+            "type": "Intel Core i7-1260P",
+            "cores": 12,
+            "speed": "2.1 GHz (up to 4.7 GHz)"
+          },
+          "memory": {
+            "size": 16,
+            "type": "LPDDR5",
+            "upgradable": false
+          },
+          "storage": {
+            "capacity": 1000,
+            "type": "NVMe SSD",
+            "upgradable": true
+          },
+          "display": {
+            "size": 17,
+            "resolution": "2560x1600",
+            "technology": "IPS",
+            "refresh_rate": 60,
+            "brightness": "350 nits"
+          },
+          "graphics": {
+            "type": "Intel Iris Xe",
+            "memory": "Shared"
+          },
+          "battery": {
+            "capacity": "80Wh",
+            "life": "Up to 17 hours"
+          },
+          "weight": 1.35,
+          "dimensions": "380.2 x 260.1 x 17.8 mm",
+          "ports": {
+            "usb_type_c": 2,
+            "usb_type_a": 2,
+            "hdmi": 1,
+            "microSD": true,
+            "headphone_jack": true
+          },
+          "durability": {
+            "military_grade": "MIL-STD-810G"
+          }
+        },
+        "description": "Incredibly lightweight 17-inch laptop weighing just 1.35kg with exceptional battery life, featuring a spacious 16:10 aspect ratio display and military-grade durability for productivity on the go.",
+        "tags": ["lightweight", "large-screen", "long-battery", "ultra-portable"],
+        "warranty": "1 year limited",
+        "release_date": "2022-01-10"
+      },
+      {
+        "id": 10,
+        "name": "MSI Stealth GS77",
+        "price": 2699,
+        "currency": "USD",
+        "brand": "MSI",
+        "category": ["gaming", "performance", "desktop-replacement"],
+        "operating_system": "Windows 11 Pro",
+        "specs": {
+          "processor": {
+            "type": "Intel Core i9-12900H",
+            "cores": 14,
+            "speed": "2.5 GHz (up to 5.0 GHz)"
+          },
+          "memory": {
+            "size": 32,
+            "type": "DDR5",
+            "upgradable": true,
+            "max_capacity": 64
+          },
+          "storage": {
+            "capacity": 2000,
+            "type": "PCIe 4.0 SSD",
+            "upgradable": true,
+            "max_capacity": 8000
+          },
+          "display": {
+            "size": 17.3,
+            "resolution": "3840x2160",
+            "technology": "IPS",
+            "refresh_rate": 120,
+            "color_accuracy": "100% AdobeRGB"
+          },
+          "graphics": {
+            "type": "NVIDIA GeForce RTX 3080 Ti",
+            "memory": 16,
+            "max_power": "150W"
+          },
+          "cooling": {
+            "system": "Cooler Boost Trinity+",
+            "fans": 3,
+            "heat_pipes": 6
+          },
+          "battery": {
+            "capacity": "99.9Wh",
+            "life": "Up to 5 hours"
+          },
+          "weight": 2.8,
+          "dimensions": "397 x 284 x 20.9 mm",
+          "ports": {
+            "usb_type_c": 1,
+            "usb_type_a": 3,
+            "hdmi": 1,
+            "thunderbolt": 1,
+            "headphone_jack": true
+          },
+          "keyboard": {
+            "type": "Per-key RGB",
+            "travel": 1.7,
+            "numpad": true
+          }
+        },
+        "description": "Ultra-powerful 17-inch gaming laptop with 4K 120Hz display, desktop-grade Intel Core i9 processor and RTX 3080 Ti graphics, featuring advanced cooling system with 3 fans and 6 heat pipes in a relatively slim chassis.",
+        "tags": ["desktop-replacement", "4k-gaming", "high-end", "i9"],
+        "warranty": "2 years limited",
+        "release_date": "2022-03-20"
+      },
+      {
+        "id": 11,
+        "name": "Samsung Galaxy Book3 Ultra",
+        "price": 2399,
+        "currency": "USD",
+        "brand": "Samsung",
+        "category": ["premium", "performance", "creator"],
+        "operating_system": "Windows 11 Pro",
+        "specs": {
+          "processor": {
+            "type": "Intel Core i7-13700H",
+            "cores": 14,
+            "speed": "2.4 GHz (up to 5.0 GHz)"
+          },
+          "memory": {
+            "size": 16,
+            "type": "LPDDR5",
+            "upgradable": false
+          },
+          "storage": {
+            "capacity": 1000,
+            "type": "NVMe SSD",
+            "upgradable": true
+          },
+          "display": {
+            "size": 16,
+            "resolution": "2880x1800",
+            "technology": "Dynamic AMOLED 2X",
+            "refresh_rate": 120,
+            "brightness": "500 nits"
+          },
+          "graphics": {
+            "type": "NVIDIA GeForce RTX 4050",
+            "memory": 6,
+            "max_power": "85W"
+          },
+          "battery": {
+            "capacity": "76Wh",
+            "life": "Up to 18 hours"
+          },
+          "weight": 1.79,
+          "dimensions": "355.4 x 250.4 x 16.5 mm",
+          "ports": {
+            "usb_type_c": 2,
+            "usb_type_a": 1,
+            "hdmi": 1,
+            "microSD": true,
+            "headphone_jack": true
+          },
+          "connectivity": {
+            "samsung_dex": true,
+            "second_screen": true
+          }
+        },
+        "description": "Premium ultrabook with stunning Dynamic AMOLED 2X display featuring 120Hz refresh rate and 500 nits brightness, powerful Intel Core i7 processor and RTX graphics, with deep integration with Samsung Galaxy ecosystem.",
+        "tags": ["samsung", "amoled", "ultrabook", "galaxy"],
+        "warranty": "1 year limited",
+        "release_date": "2023-02-01"
+      },
+      {
+        "id": 12,
+        "name": "Framework Laptop 13",
+        "price": 1399,
+        "currency": "USD",
+        "brand": "Framework",
+        "category": ["modular", "repairable", "business"],
+        "operating_system": "Windows 11 Home",
+        "specs": {
+          "processor": {
+            "type": "Intel Core i7-1260P",
+            "cores": 12,
+            "speed": "2.1 GHz (up to 4.7 GHz)"
+          },
+          "memory": {
+            "size": 16,
+            "type": "DDR4",
+            "upgradable": true
+          },
+          "storage": {
+            "capacity": 512,
+            "type": "NVMe SSD",
+            "upgradable": true
+          },
+          "display": {
+            "size": 13.5,
+            "resolution": "2256x1504",
+            "technology": "IPS",
+            "refresh_rate": 60,
+            "aspect_ratio": "3:2"
+          },
+          "graphics": {
+            "type": "Intel Iris Xe",
+            "memory": "Shared"
+          },
+          "modularity": {
+            "ports": "Swappable modules",
+            "expansion": true
+          },
+          "battery": {
+            "capacity": "55Wh",
+            "life": "Up to 10 hours"
+          },
+          "weight": 1.3,
+          "dimensions": "296.6 x 229 x 15.85 mm",
+          "ports": {
+            "usb_type_c": 4,
+            "expansion_slots": 4
+          }
+        },
+        "description": "Innovative modular laptop designed for repairability and upgradability, featuring swappable port modules and easy access to internal components, with 3:2 aspect ratio display and 100% sRGB color coverage.",
+        "tags": ["modular", "repairable", "framework", "upgradable"],
+        "warranty": "1 year limited",
+        "release_date": "2022-07-15"
+      },
+      {
+        "id": 13,
+        "name": "Alienware x14 R2",
+        "price": 2199,
+        "currency": "USD",
+        "brand": "Alienware",
+        "category": ["gaming", "ultraportable", "premium"],
+        "operating_system": "Windows 11 Home",
+        "specs": {
+          "processor": {
+            "type": "Intel Core i7-13620H",
+            "cores": 10,
+            "speed": "2.4 GHz (up to 4.9 GHz)"
+          },
+          "memory": {
+            "size": 16,
+            "type": "LPDDR5",
+            "upgradable": false
+          },
+          "storage": {
+            "capacity": 1000,
+            "type": "PCIe 4.0 SSD",
+            "upgradable": true
+          },
+          "display": {
+            "size": 14,
+            "resolution": "2560x1600",
+            "technology": "IPS",
+            "refresh_rate": 165,
+            "response_time": "3ms"
+          },
+          "graphics": {
+            "type": "NVIDIA GeForce RTX 4060",
+            "memory": 8,
+            "max_power": "85W"
+          },
+          "cooling": {
+            "system": "Element 31 thermal interface",
+            "fans": 2
+          },
+          "battery": {
+            "capacity": "80Wh",
+            "life": "Up to 7 hours"
+          },
+          "weight": 1.84,
+          "dimensions": "321.5 x 262.7 x 14.5 mm",
+          "ports": {
+            "usb_type_c": 2,
+            "usb_type_a": 1,
+            "hdmi": 1,
+            "microSD": true,
+            "headphone_jack": true
+          },
+          "lighting": {
+            "zones": "AlienFX per-key RGB"
+          }
+        },
+        "description": "Ultra-thin 14-inch gaming laptop featuring powerful RTX 4060 graphics in just 14.5mm chassis, with premium magnesium alloy construction, advanced cooling solution, and Alienware's Legend 2.0 design language.",
+        "tags": ["alienware", "gaming", "ultraportable", "thin"],
+        "warranty": "1 year premium support",
+        "release_date": "2023-01-10"
+      },
+      {
+        "id": 14,
+        "name": "HP Omen 16",
+        "price": 1699,
+        "currency": "USD",
+        "brand": "HP",
+        "category": ["gaming", "performance", "budget"],
+        "operating_system": "Windows 11 Home",
+        "specs": {
+          "processor": {
+            "type": "AMD Ryzen 7 7840HS",
+            "cores": 8,
+            "speed": "3.8 GHz (up to 5.1 GHz)"
+          },
+          "memory": {
+            "size": 16,
+            "type": "DDR5",
+            "upgradable": true,
+            "max_capacity": 32
+          },
+          "storage": {
+            "capacity": 1000,
+            "type": "PCIe 4.0 SSD",
+            "upgradable": true,
+            "max_capacity": 2000
+          },
+          "display": {
+            "size": 16.1,
+            "resolution": "1920x1080",
+            "technology": "IPS",
+            "refresh_rate": 165,
+            "response_time": "7ms"
+          },
+          "graphics": {
+            "type": "NVIDIA GeForce RTX 4060",
+            "memory": 8,
+            "max_power": "115W"
+          },
+          "cooling": {
+            "system": "Omen Tempest Cooling",
+            "fans": 2
+          },
+          "battery": {
+            "capacity": "83Wh",
+            "life": "Up to 6 hours"
+          },
+          "weight": 2.32,
+          "dimensions": "369 x 248 x 23.5 mm",
+          "ports": {
+            "usb_type_c": 1,
+            "usb_type_a": 3,
+            "hdmi": 1,
+            "miniDP": 1,
+            "headphone_jack": true
+          },
+          "keyboard": {
+            "type": "4-zone RGB",
+            "travel": 1.5
+          }
+        },
+        "description": "Powerful 16-inch gaming laptop featuring AMD Ryzen 7 processor and RTX 4060 graphics with 115W TGP, 165Hz refresh rate display, and Omen Tempest Cooling technology for sustained performance.",
+        "tags": ["omen", "gaming", "amd", "budget"],
+        "warranty": "1 year limited",
+        "release_date": "2023-04-15"
+      },
+      {
+        "id": 15,
+        "name": "Asus TUF Gaming A15",
+        "price": 1299,
+        "currency": "USD",
+        "brand": "Asus",
+        "category": ["gaming", "budget", "durable"],
+        "operating_system": "Windows 11 Home",
+        "specs": {
+          "processor": {
+            "type": "AMD Ryzen 7 7735HS",
+            "cores": 8,
+            "speed": "3.2 GHz (up to 4.75 GHz)"
+          },
+          "memory": {
+            "size": 16,
+            "type": "DDR5",
+            "upgradable": true,
+            "max_capacity": 32
+          },
+          "storage": {
+            "capacity": 512,
+            "type": "PCIe 3.0 SSD",
+            "upgradable": true,
+            "max_capacity": 2000
+          },
+          "display": {
+            "size": 15.6,
+            "resolution": "1920x1080",
+            "technology": "IPS",
+            "refresh_rate": 144,
+            "response_time": "7ms"
+          },
+          "graphics": {
+            "type": "NVIDIA GeForce RTX 4050",
+            "memory": 6,
+            "max_power": "95W"
+          },
+          "durability": {
+            "military_grade": "MIL-STD-810H"
+          },
+          "battery": {
+            "capacity": "90Wh",
+            "life": "Up to 8 hours"
+          },
+          "weight": 2.2,
+          "dimensions": "354 x 251 x 22.4 mm",
+          "ports": {
+            "usb_type_c": 1,
+            "usb_type_a": 3,
+            "hdmi": 1,
+            "headphone_jack": true
+          }
+        },
+        "description": "Durable budget gaming laptop featuring AMD Ryzen 7 processor and RTX 4050 graphics, MIL-STD-810H military standard durability, and 144Hz refresh rate display in a value-oriented package.",
+        "tags": ["tuf", "gaming", "budget", "durable"],
+        "warranty": "1 year international",
+        "release_date": "2023-01-20"
+      },
+      {
+        "id": 16,
+        "name": "Dell Inspiron 16 Plus",
+        "price": 1499,
+        "currency": "USD",
+        "brand": "Dell",
+        "category": ["creator", "performance", "budget"],
+        "operating_system": "Windows 11 Home",
+        "specs": {
+          "processor": {
+            "type": "Intel Core i7-1260P",
+            "cores": 12,
+            "speed": "2.1 GHz (up to 4.7 GHz)"
+          },
+          "memory": {
+            "size": 16,
+            "type": "DDR5",
+            "upgradable": true,
+            "max_capacity": 32
+          },
+          "storage": {
+            "capacity": 512,
+            "type": "NVMe SSD",
+            "upgradable": true,
+            "max_capacity": 2000
+          },
+          "display": {
+            "size": 16,
+            "resolution": "3072x1920",
+            "technology": "IPS",
+            "refresh_rate": 60,
+            "brightness": "300 nits"
+          },
+          "graphics": {
+            "type": "NVIDIA GeForce RTX 3050",
+            "memory": 4,
+            "max_power": "60W"
+          },
+          "battery": {
+            "capacity": "86Wh",
+            "life": "Up to 8 hours"
+          },
+          "weight": 2.05,
+          "dimensions": "355.3 x 251.2 x 16.95 mm",
+          "ports": {
+            "usb_type_c": 1,
+            "usb_type_a": 2,
+            "hdmi": 1,
+            "headphone_jack": true
+          }
+        },
+        "description": "16-inch creator laptop featuring 3K resolution display, Intel Core i7 processor and RTX 3050 graphics, offering excellent performance for content creation at a reasonable price point.",
+        "tags": ["inspiron", "creator", "3k", "budget"],
+        "warranty": "1 year mail-in",
+        "release_date": "2022-06-15"
+      },
+      {
+        "id": 17,
+        "name": "MSI Prestige 14 Evo",
+        "price": 1399,
+        "currency": "USD",
+        "brand": "MSI",
+        "category": ["business", "ultrabook", "evo"],
+        "operating_system": "Windows 11 Home",
+        "specs": {
+          "processor": {
+            "type": "Intel Core i7-1260P",
+            "cores": 12,
+            "speed": "2.1 GHz (up to 4.7 GHz)"
+          },
+          "memory": {
+            "size": 16,
+            "type": "LPDDR5",
+            "upgradable": false
+          },
+          "storage": {
+            "capacity": 512,
+            "type": "NVMe SSD",
+            "upgradable": true
+          },
+          "display": {
+            "size": 14,
+            "resolution": "2560x1600",
+            "technology": "IPS",
+            "refresh_rate": 60,
+            "brightness": "400 nits"
+          },
+          "graphics": {
+            "type": "Intel Iris Xe",
+            "memory": "Shared"
+          },
+          "certification": {
+            "intel_evo": true
+          },
+          "battery": {
+            "capacity": "72Wh",
+            "life": "Up to 12 hours"
+          },
+          "weight": 1.29,
+          "dimensions": "319 x 219 x 16.9 mm",
+          "ports": {
+            "usb_type_c": 2,
+            "usb_type_a": 2,
+            "thunderbolt": 2,
+            "headphone_jack": true
+          }
+        },
+        "description": "Intel Evo certified business ultrabook featuring 16:10 QHD+ display, premium aluminum chassis, and all-day battery life with fast charging capability.",
+        "tags": ["prestige", "evo", "business", "ultrabook"],
+        "warranty": "1 year limited",
+        "release_date": "2022-05-10"
+      },
+      {
+        "id": 18,
+        "name": "Samsung Galaxy Book2 Pro 360",
+        "price": 1499,
+        "currency": "USD",
+        "brand": "Samsung",
+        "category": ["convertible", "ultrabook", "premium"],
+        "operating_system": "Windows 11 Home",
+        "specs": {
+          "processor": {
+            "type": "Intel Core i7-1260P",
+            "cores": 12,
+            "speed": "2.1 GHz (up to 4.7 GHz)"
+          },
+          "memory": {
+            "size": 16,
+            "type": "LPDDR5",
+            "upgradable": false
+          },
+          "storage": {
+            "capacity": 512,
+            "type": "NVMe SSD",
+            "upgradable": false
+          },
+          "display": {
+            "size": 15.6,
+            "resolution": "1920x1080",
+            "technology": "Super AMOLED",
+            "refresh_rate": 60,
+            "touch": true
+          },
+          "graphics": {
+            "type": "Intel Iris Xe",
+            "memory": "Shared"
+          },
+          "battery": {
+            "capacity": "68Wh",
+            "life": "Up to 21 hours"
+          },
+          "weight": 1.41,
+          "dimensions": "355.4 x 251.8 x 11.9 mm",
+          "ports": {
+            "usb_type_c": 2,
+            "usb_type_a": 1,
+            "microSD": true,
+            "headphone_jack": true
+          },
+          "stylus": {
+            "included": true,
+            "technology": "S Pen"
+          }
+        },
+        "description": "Premium convertible laptop with stunning Super AMOLED touch display, included S Pen with 4096 pressure levels, and ultra-thin 11.9mm design with 360-degree hinge for multiple usage modes.",
+        "tags": ["galaxy", "convertible", "amoled", "s-pen"],
+        "warranty": "1 year limited",
+        "release_date": "2022-04-05"
+      },
+      {
+        "id": 19,
+        "name": "Lenovo IdeaPad Slim 7 Carbon",
+        "price": 1199,
+        "currency": "USD",
+        "brand": "Lenovo",
+        "category": ["ultrabook", "lightweight", "business"],
+        "operating_system": "Windows 11 Home",
+        "specs": {
+          "processor": {
+            "type": "AMD Ryzen 7 6800U",
+            "cores": 8,
+            "speed": "2.7 GHz (up to 4.7 GHz)"
+          },
+          "memory": {
+            "size": 16,
+            "type": "LPDDR5",
+            "upgradable": false
+          },
+          "storage": {
+            "capacity": 512,
+            "type": "NVMe SSD",
+            "upgradable": false
+          },
+          "display": {
+            "size": 14,
+            "resolution": "2880x1800",
+            "technology": "OLED",
+            "refresh_rate": 90,
+            "brightness": "400 nits"
+          },
+          "graphics": {
+            "type": "AMD Radeon 680M",
+            "memory": "Shared"
+          },
+          "battery": {
+            "capacity": "61Wh",
+            "life": "Up to 14 hours"
+          },
+          "weight": 1.1,
+          "dimensions": "313.5 x 220 x 14.9 mm",
+          "ports": {
+            "usb_type_c": 2,
+            "usb_type_a": 1,
+            "headphone_jack": true
+          },
+          "material": {
+            "top": "Magnesium",
+            "bottom": "Carbon fiber"
+          }
+        },
+        "description": "Extremely lightweight 14-inch ultrabook with 2.8K OLED display, magnesium and carbon fiber construction weighing just 1.1kg, featuring AMD Ryzen 7 processor with RDNA 2 graphics.",
+        "tags": ["ideapad", "oled", "lightweight", "carbon"],
+        "warranty": "1 year depot",
+        "release_date": "2022-07-20"
+      },
+      {
+        "id": 20,
+        "name": "HP Pavilion Plus 14",
+        "price": 999,
+        "currency": "USD",
+        "brand": "HP",
+        "category": ["budget", "ultrabook", "student"],
+        "operating_system": "Windows 11 Home",
+        "specs": {
+          "processor": {
+            "type": "Intel Core i5-1240P",
+            "cores": 12,
+            "speed": "1.7 GHz (up to 4.4 GHz)"
+          },
+          "memory": {
+            "size": 16,
+            "type": "LPDDR4x",
+            "upgradable": false
+          },
+          "storage": {
+            "capacity": 512,
+            "type": "NVMe SSD",
+            "upgradable": true
+          },
+          "display": {
+            "size": 14,
+            "resolution": "2240x1400",
+            "technology": "IPS",
+            "refresh_rate": 60,
+            "brightness": "300 nits"
+          },
+          "graphics": {
+            "type": "Intel Iris Xe",
+            "memory": "Shared"
+          },
+          "battery": {
+            "capacity": "51Wh",
+            "life": "Up to 9 hours"
+          },
+          "weight": 1.44,
+          "dimensions": "313.6 x 221.5 x 17.5 mm",
+          "ports": {
+            "usb_type_c": 2,
+            "usb_type_a": 1,
+            "hdmi": 1,
+            "headphone_jack": true
+          }
+        },
+        "description": "Affordable 14-inch ultrabook with 2.2K resolution display, Intel Core i5 processor, and lightweight design, offering excellent value for students and professionals.",
+        "tags": ["pavilion", "budget", "student", "value"],
+        "warranty": "1 year limited",
+        "release_date": "2022-09-10"
+      },
+      {
+        "id": 21,
+        "name": "Asus Vivobook Pro 16X OLED",
+        "price": 1599,
+        "currency": "USD",
+        "brand": "Asus",
+        "category": ["creator", "performance", "budget"],
+        "operating_system": "Windows 11 Home",
+        "specs": {
+          "processor": {
+            "type": "AMD Ryzen 9 6900HX",
+            "cores": 8,
+            "speed": "3.3 GHz (up to 4.9 GHz)"
+          },
+          "memory": {
+            "size": 16,
+            "type": "DDR5",
+            "upgradable": true,
+            "max_capacity": 32
+          },
+          "storage": {
+            "capacity": 1000,
+            "type": "PCIe 4.0 SSD",
+            "upgradable": true,
+            "max_capacity": 2000
+          },
+          "display": {
+            "size": 16,
+            "resolution": "3840x2400",
+            "technology": "OLED",
+            "refresh_rate": 60,
+            "color_accuracy": "100% DCI-P3"
+          },
+          "graphics": {
+            "type": "NVIDIA GeForce RTX 3060",
+            "memory": 6,
+            "max_power": "120W"
+          },
+          "battery": {
+            "capacity": "90Wh",
+            "life": "Up to 7 hours"
+          },
+          "weight": 2.4,
+          "dimensions": "360 x 260 x 19.9 mm",
+          "ports": {
+            "usb_type_c": 1,
+            "usb_type_a": 2,
+            "hdmi": 1,
+            "headphone_jack": true
+          },
+          "keyboard": {
+            "type": "Backlit",
+            "num_pad": true,
+            "asusscreenpad": false
+          }
+        },
+        "description": "Content creation laptop featuring 4K OLED display with 100% DCI-P3 coverage, powerful AMD Ryzen 9 processor and RTX 3060 graphics, optimized for creative professionals.",
+        "tags": ["vivobook", "creator", "oled", "4k"],
+        "warranty": "1 year international",
+        "release_date": "2022-08-15"
+      },
+      {
+        "id": 22,
+        "name": "Acer Chromebook Spin 714",
+        "price": 799,
+        "currency": "USD",
+        "brand": "Acer",
+        "category": ["chromebook", "convertible", "education"],
+        "operating_system": "Chrome OS",
+        "specs": {
+          "processor": {
+            "type": "Intel Core i5-1235U",
+            "cores": 10,
+            "speed": "1.3 GHz (up to 4.4 GHz)"
+          },
+          "memory": {
+            "size": 8,
+            "type": "LPDDR4x",
+            "upgradable": false
+          },
+          "storage": {
+            "capacity": 256,
+            "type": "NVMe SSD",
+            "upgradable": false
+          },
+          "display": {
+            "size": 14,
+            "resolution": "1920x1200",
+            "technology": "IPS Touch",
+            "refresh_rate": 60,
+            "brightness": "340 nits"
+          },
+          "graphics": {
+            "type": "Intel Iris Xe",
+            "memory": "Shared"
+          },
+          "battery": {
+            "capacity": "56Wh",
+            "life": "Up to 10 hours"
+          },
+          "weight": 1.4,
+          "dimensions": "318.5 x 220.5 x 17.9 mm",
+          "ports": {
+            "usb_type_c": 2,
+            "usb_type_a": 2,
+            "hdmi": 1,
+            "headphone_jack": true
+          },
+          "stylus": {
+            "included": true,
+            "technology": "USI"
+          }
+        },
+        "description": "Premium Chromebook convertible with 360-degree hinge, included USI stylus, and Intel Core i5 processor, offering excellent performance for education and business use.",
+        "tags": ["chromebook", "convertible", "education", "touch"],
+        "warranty": "1 year international",
+        "release_date": "2022-06-01"
+      },
+      {
+        "id": 23,
+        "name": "Dell Precision 5470",
+        "price": 2499,
+        "currency": "USD",
+        "brand": "Dell",
+        "category": ["workstation", "professional", "mobile"],
+        "operating_system": "Windows 11 Pro",
+        "specs": {
+          "processor": {
+            "type": "Intel Core i7-12800H",
+            "cores": 14,
+            "speed": "2.4 GHz (up to 4.8 GHz)"
+          },
+          "memory": {
+            "size": 32,
+            "type": "DDR5",
+            "upgradable": true,
+            "max_capacity": 64
+          },
+          "storage": {
+            "capacity": 1000,
+            "type": "PCIe 4.0 SSD",
+            "upgradable": true,
+            "max_capacity": 4000
+          },
+          "display": {
+            "size": 14,
+            "resolution": "2560x1600",
+            "technology": "IPS",
+            "refresh_rate": 60,
+            "brightness": "500 nits"
+          },
+          "graphics": {
+            "type": "NVIDIA RTX A1000",
+            "memory": 4,
+            "max_power": "60W"
+          },
+          "certification": {
+            "isv": ["AutoCAD", "SolidWorks", "Revit"]
+          },
+          "battery": {
+            "capacity": "72Wh",
+            "life": "Up to 14 hours"
+          },
+          "weight": 1.48,
+          "dimensions": "313.5 x 210.3 x 9.1-11.6 mm",
+          "ports": {
+            "usb_type_c": 4,
+            "thunderbolt": 4,
+            "headphone_jack": true
+          },
+          "security": {
+            "smart_card": true,
+            "fingerprint": true
+          }
+        },
+        "description": "Mobile workstation featuring Intel Core i7 processor and NVIDIA RTX professional graphics, ISV-certified for engineering and creative applications, in an ultra-compact 14-inch chassis.",
+        "tags": ["precision", "workstation", "professional", "cad"],
+        "warranty": "3 years premium support",
+        "release_date": "2022-05-20"
+      },
+      {
+        "id": 24,
+        "name": "Apple MacBook Air 15 (M2)",
+        "price": 1799,
+        "currency": "USD",
+        "brand": "Apple",
+        "category": ["ultrabook", "premium", "consumer"],
+        "operating_system": "macOS",
+        "specs": {
+          "processor": {
+            "type": "Apple M2",
+            "cores": 8,
+            "speed": "3.5 GHz"
+          },
+          "memory": {
+            "size": 16,
+            "type": "LPDDR5",
+            "upgradable": false
+          },
+          "storage": {
+            "capacity": 512,
+            "type": "SSD",
+            "upgradable": false
+          },
+          "display": {
+            "size": 15.3,
+            "resolution": "2880x1864",
+            "technology": "Liquid Retina",
+            "refresh_rate": 60,
+            "brightness": "500 nits"
+          },
+          "graphics": {
+            "type": "Apple M2 10-core",
+            "memory": "Shared"
+          },
+          "battery": {
+            "capacity": "66.5Wh",
+            "life": "Up to 18 hours"
+          },
+          "weight": 1.51,
+          "dimensions": "340.4 x 235.1 x 11.5 mm",
+          "ports": {
+            "usb_type_c": 2,
+            "thunderbolt": 2,
+            "headphone_jack": true,
+            "mag_safe": true
+          }
+        },
+        "description": "Thin and light 15-inch MacBook Air featuring Apple M2 chip with 8-core CPU and 10-core GPU, fanless design, and Liquid Retina display with 500 nits brightness.",
+        "tags": ["macbook", "air", "m2", "thin"],
+        "warranty": "1 year limited",
+        "release_date": "2023-06-13"
+      },
+      {
+        "id": 25,
+        "name": "Acer Predator Helios 16",
+        "price": 1999,
+        "currency": "USD",
+        "brand": "Acer",
+        "category": ["gaming", "performance", "desktop-replacement"],
+        "operating_system": "Windows 11 Home",
+        "specs": {
+          "processor": {
+            "type": "Intel Core i7-13700HX",
+            "cores": 16,
+            "speed": "2.1 GHz (up to 5.0 GHz)"
+          },
+          "memory": {
+            "size": 16,
+            "type": "DDR5",
+            "upgradable": true,
+            "max_capacity": 32
+          },
+          "storage": {
+            "capacity": 1000,
+            "type": "PCIe 4.0 SSD",
+            "upgradable": true,
+            "max_capacity": 4000
+          },
+          "display": {
+            "size": 16,
+            "resolution": "2560x1600",
+            "technology": "IPS",
+            "refresh_rate": 240,
+            "response_time": "3ms"
+          },
+          "graphics": {
+            "type": "NVIDIA GeForce RTX 4070",
+            "memory": 8,
+            "max_power": "140W"
+          },
+          "cooling": {
+            "system": "5th Gen AeroBlade",
+            "fans": 2,
+            "liquid_metal": false
+          },
+          "battery": {
+            "capacity": "90Wh",
+            "life": "Up to 5 hours"
+          },
+          "weight": 2.6,
+          "dimensions": "357.8 x 278.7 x 26.9 mm",
+          "ports": {
+            "usb_type_c": 1,
+            "usb_type_a": 3,
+            "hdmi": 1,
+            "miniDP": 1,
+            "headphone_jack": true
+          },
+          "keyboard": {
+            "type": "Per-key RGB",
+            "travel": 1.7
+          }
+        },
+        "description": "Powerful 16-inch gaming laptop featuring Intel Core i7 processor and RTX 4070 graphics with 140W TGP, 240Hz QHD+ display, and advanced cooling system with 5th Gen AeroBlade fans.",
+        "tags": ["predator", "gaming", "240hz", "qhd"],
+        "warranty": "1 year international",
+        "release_date": "2023-03-15"
+      },
+      {
+        "id": 26,
+        "name": "Microsoft Surface Laptop Studio",
+        "price": 2099,
+        "currency": "USD",
+        "brand": "Microsoft",
+        "category": ["convertible", "creator", "premium"],
+        "operating_system": "Windows 11 Pro",
+        "specs": {
+          "processor": {
+            "type": "Intel Core i7-11370H",
+            "cores": 4,
+            "speed": "3.3 GHz (up to 4.8 GHz)"
+          },
+          "memory": {
+            "size": 16,
+            "type": "LPDDR4x",
+            "upgradable": false
+          },
+          "storage": {
+            "capacity": 512,
+            "type": "NVMe SSD",
+            "upgradable": false
+          },
+          "display": {
+            "size": 14.4,
+            "resolution": "2400x1600",
+            "technology": "PixelSense Flow",
+            "refresh_rate": 120,
+            "touch": true
+          },
+          "graphics": {
+            "type": "NVIDIA GeForce RTX 3050 Ti",
+            "memory": 4,
+            "max_power": "50W"
+          },
+          "battery": {
+            "capacity": "58Wh",
+            "life": "Up to 18 hours"
+          },
+          "weight": 1.82,
+          "dimensions": "323.3 x 228.3 x 18.9 mm",
+          "ports": {
+            "usb_type_c": 2,
+            "surface_connect": true,
+            "headphone_jack": true
+          },
+          "stylus": {
+            "included": true,
+            "technology": "Surface Slim Pen 2"
+          }
+        },
+        "description": "Innovative convertible laptop with dynamic woven hinge that transforms between laptop, stage, and studio modes, featuring 120Hz touch display and included Slim Pen 2 for creative work.",
+        "tags": ["surface", "studio", "convertible", "creative"],
+        "warranty": "1 year limited",
+        "release_date": "2021-09-22"
+      },
+      {
+        "id": 27,
+        "name": "Lenovo Legion Pro 7i",
+        "price": 2499,
+        "currency": "USD",
+        "brand": "Lenovo",
+        "category": ["gaming", "performance", "desktop-replacement"],
+        "operating_system": "Windows 11 Home",
+        "specs": {
+          "processor": {
+            "type": "Intel Core i9-13900HX",
+            "cores": 24,
+            "speed": "2.2 GHz (up to 5.4 GHz)"
+          },
+          "memory": {
+            "size": 32,
+            "type": "DDR5",
+            "upgradable": true,
+            "max_capacity": 64
+          },
+          "storage": {
+            "capacity": 1000,
+            "type": "PCIe 4.0 SSD",
+            "upgradable": true,
+            "max_capacity": 4000
+          },
+          "display": {
+            "size": 16,
+            "resolution": "2560x1600",
+            "technology": "IPS",
+            "refresh_rate": 240,
+            "response_time": "3ms"
+          },
+          "graphics": {
+            "type": "NVIDIA GeForce RTX 4080",
+            "memory": 12,
+            "max_power": "175W"
+          },
+          "cooling": {
+            "system": "Legion Coldfront 5.0",
+            "fans": 2,
+            "liquid_metal": true
+          },
+          "battery": {
+            "capacity": "99.99Wh",
+            "life": "Up to 5 hours"
+          },
+          "weight": 2.8,
+          "dimensions": "363.4 x 260.3 x 21.9-26.9 mm",
+          "ports": {
+            "usb_type_c": 2,
+            "usb_type_a": 3,
+            "hdmi": 1,
+            "headphone_jack": true
+          },
+          "keyboard": {
+            "type": "Per-key RGB",
+            "travel": 1.5
+          }
+        },
+        "description": "Extreme-performance gaming laptop featuring Intel Core i9 processor and RTX 4080 graphics with 175W TGP, 240Hz QHD+ display, and advanced Legion Coldfront 5.0 cooling with liquid metal thermal compound.",
+        "tags": ["legion", "gaming", "i9", "high-end"],
+        "warranty": "1 year depot",
+        "release_date": "2023-02-10"
+      },
+      {
+        "id": 28,
+        "name": "HP Omen 16",
+        "price": 1699,
+        "currency": "USD",
+        "brand": "HP",
+        "category": ["gaming", "performance", "budget"],
+        "operating_system": "Windows 11 Home",
+        "specs": {
+          "processor": {
+            "type": "AMD Ryzen 7 7840HS",
+            "cores": 8,
+            "speed": "3.8 GHz (up to 5.1 GHz)"
+          },
+          "memory": {
+            "size": 16,
+            "type": "DDR5",
+            "upgradable": true,
+            "max_capacity": 32
+          },
+          "storage": {
+            "capacity": 1000,
+            "type": "PCIe 4.0 SSD",
+            "upgradable": true,
+            "max_capacity": 2000
+          },
+          "display": {
+            "size": 16.1,
+            "resolution": "1920x1080",
+            "technology": "IPS",
+            "refresh_rate": 165,
+            "response_time": "7ms"
+          },
+          "graphics": {
+            "type": "NVIDIA GeForce RTX 4060",
+            "memory": 8,
+            "max_power": "115W"
+          },
+          "cooling": {
+            "system": "Omen Tempest Cooling",
+            "fans": 2
+          },
+          "battery": {
+            "capacity": "83Wh",
+            "life": "Up to 6 hours"
+          },
+          "weight": 2.32,
+          "dimensions": "369 x 248 x 23.5 mm",
+          "ports": {
+            "usb_type_c": 1,
+            "usb_type_a": 3,
+            "hdmi": 1,
+            "miniDP": 1,
+            "headphone_jack": true
+          },
+          "keyboard": {
+            "type": "4-zone RGB",
+            "travel": 1.5
+          }
+        },
+        "description": "Powerful 16-inch gaming laptop featuring AMD Ryzen 7 processor and RTX 4060 graphics with 115W TGP, 165Hz refresh rate display, and Omen Tempest Cooling technology for sustained performance.",
+        "tags": ["omen", "gaming", "amd", "budget"],
+        "warranty": "1 year limited",
+        "release_date": "2023-04-15"
+      },
+      {
+        "id": 29,
+        "name": "Asus TUF Gaming A15",
+        "price": 1299,
+        "currency": "USD",
+        "brand": "Asus",
+        "category": ["gaming", "budget", "durable"],
+        "operating_system": "Windows 11 Home",
+        "specs": {
+          "processor": {
+            "type": "AMD Ryzen 7 7735HS",
+            "cores": 8,
+            "speed": "3.2 GHz (up to 4.75 GHz)"
+          },
+          "memory": {
+            "size": 16,
+            "type": "DDR5",
+            "upgradable": true,
+            "max_capacity": 32
+          },
+          "storage": {
+            "capacity": 512,
+            "type": "PCIe 3.0 SSD",
+            "upgradable": true,
+            "max_capacity": 2000
+          },
+          "display": {
+            "size": 15.6,
+            "resolution": "1920x1080",
+            "technology": "IPS",
+            "refresh_rate": 144,
+            "response_time": "7ms"
+          },
+          "graphics": {
+            "type": "NVIDIA GeForce RTX 4050",
+            "memory": 6,
+            "max_power": "95W"
+          },
+          "durability": {
+            "military_grade": "MIL-STD-810H"
+          },
+          "battery": {
+            "capacity": "90Wh",
+            "life": "Up to 8 hours"
+          },
+          "weight": 2.2,
+          "dimensions": "354 x 251 x 22.4 mm",
+          "ports": {
+            "usb_type_c": 1,
+            "usb_type_a": 3,
+            "hdmi": 1,
+            "headphone_jack": true
+          }
+        },
+        "description": "Durable budget gaming laptop featuring AMD Ryzen 7 processor and RTX 4050 graphics, MIL-STD-810H military standard durability, and 144Hz refresh rate display in a value-oriented package.",
+        "tags": ["tuf", "gaming", "budget", "durable"],
+        "warranty": "1 year international",
+        "release_date": "2023-01-20"
+      },
+      {
+        "id": 30,
+        "name": "Dell Inspiron 16 Plus",
+        "price": 1499,
+        "currency": "USD",
+        "brand": "Dell",
+        "category": ["creator", "performance", "budget"],
+        "operating_system": "Windows 11 Home",
+        "specs": {
+          "processor": {
+            "type": "Intel Core i7-1260P",
+            "cores": 12,
+            "speed": "2.1 GHz (up to 4.7 GHz)"
+          },
+          "memory": {
+            "size": 16,
+            "type": "DDR5",
+            "upgradable": true,
+            "max_capacity": 32
+          },
+          "storage": {
+            "capacity": 512,
+            "type": "NVMe SSD",
+            "upgradable": true,
+            "max_capacity": 2000
+          },
+          "display": {
+            "size": 16,
+            "resolution": "3072x1920",
+            "technology": "IPS",
+            "refresh_rate": 60,
+            "brightness": "300 nits"
+          },
+          "graphics": {
+            "type": "NVIDIA GeForce RTX 3050",
+            "memory": 4,
+            "max_power": "60W"
+          },
+          "battery": {
+            "capacity": "86Wh",
+            "life": "Up to 8 hours"
+          },
+          "weight": 2.05,
+          "dimensions": "355.3 x 251.2 x 16.95 mm",
+          "ports": {
+            "usb_type_c": 1,
+            "usb_type_a": 2,
+            "hdmi": 1,
+            "headphone_jack": true
+          }
+        },
+        "description": "16-inch creator laptop featuring 3K resolution display, Intel Core i7 processor and RTX 3050 graphics, offering excellent performance for content creation at a reasonable price point.",
+        "tags": ["inspiron", "creator", "3k", "budget"],
+        "warranty": "1 year mail-in",
+        "release_date": "2022-06-15"
+      }
+    ],
+    "categories": [
+      {
+        "name": "gaming",
+        "features": ["high_refresh_rate", "powerful_gpu", "rgb_keyboard"],
+        "typical_users": ["gamers", "streamers", "esports"]
+      },
+      {
+        "name": "business",
+        "features": ["security", "durable", "long_battery"],
+        "typical_users": ["executives", "sales", "consultants"]
+      },
+      {
+        "name": "creative",
+        "features": ["color_accurate_display", "powerful_cpu", "large_ram"],
+        "typical_users": ["designers", "video_editors", "photographers"]
+      },
+      {
+        "name": "budget",
+        "features": ["affordable", "basic_performance", "plastic_build"],
+        "typical_users": ["students", "home_users", "seniors"]
+      },
+      {
+        "name": "ultrabook",
+        "features": ["lightweight", "thin", "long_battery"],
+        "typical_users": ["travelers", "presenters", "frequent_flyers"]
+      },
+      {
+        "name": "workstation",
+        "features": ["isv_certified", "ecc_memory", "professional_gpu"],
+        "typical_users": ["engineers", "architects", "data_scientists"]
+      }
+    ],
+    "comparison_attributes": [
+      "price",
+      "weight",
+      "processor_type",
+      "gpu_type",
+      "battery_life",
+      "display_quality",
+      "portability",
+      "refresh_rate",
+      "ram_size",
+      "storage_capacity"
+    ],
+    "brands": {
+      "Apple": {
+        "strengths": ["build_quality", "ecosystem", "resale_value"],
+        "price_range": "premium"
+      },
+      "Dell": {
+        "strengths": ["business", "support", "reliability"],
+        "price_range": "mid-to-high"
+      },
+      "Asus": {
+        "strengths": ["gaming", "innovation", "design"],
+        "price_range": "mid-range"
+      },
+      "Lenovo": {
+        "strengths": ["keyboards", "business", "durability"],
+        "price_range": "mid-range"
+      },
+      "HP": {
+        "strengths": ["versatility", "enterprise", "value"],
+        "price_range": "budget-to-mid"
+      },
+      "MSI": {
+        "strengths": ["gaming", "cooling", "performance"],
+        "price_range": "mid-to-high"
+      },
+      "Acer": {
+        "strengths": ["value", "gaming", "budget"],
+        "price_range": "budget-to-mid"
+      }
+    }
+  }

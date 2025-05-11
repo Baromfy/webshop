@@ -12,12 +12,15 @@ export class ReviewService {
     private auth: Auth
   ) {}
 
-  async addReview(productId: string, rating: number, comment: string, userEmail: string) {
+  async addReview(productId: string, comment: string) {
+    if (!this.auth.currentUser) {
+      throw new Error('Nincs bejelentkezett felhasználó');
+    }
+    
     const review = {
       productId,
-      userId: this.auth.currentUser?.uid,
-      userEmail,
-      rating,
+      userId: this.auth.currentUser.uid,
+      userEmail: this.auth.currentUser.email,
       comment,
       createdAt: new Date()
     };
@@ -28,8 +31,6 @@ export class ReviewService {
 
   getReviewsForProduct(productId: string): Observable<any[]> {
     const reviewsCollection = collection(this.firestore, 'reviews');
-    // Remove the orderBy clause to avoid requiring a composite index
-    // While this is not ideal, it will work until a proper index is created in Firebase
     const q = query(
       reviewsCollection,
       where('productId', '==', productId)
@@ -47,10 +48,9 @@ export class ReviewService {
     return collectionData(q, { idField: 'id' }) as Observable<any[]>;
   }
 
-  async updateReview(reviewId: string, rating: number, comment: string) {
+  async updateReview(reviewId: string, comment: string) {
     const reviewDoc = doc(this.firestore, `reviews/${reviewId}`);
     return await updateDoc(reviewDoc, {
-      rating,
       comment,
       updatedAt: new Date()
     });

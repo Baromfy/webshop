@@ -1,26 +1,22 @@
-<form [formGroup]="reviewForm" (ngSubmit)="onSubmit()" class="review-form">
-    <h3>Írd meg a véleményed</h3>
-    
-    <div class="rating-selector">
-      <mat-icon *ngFor="let star of [1,2,3,4,5]" 
-                (click)="setRating(star)"
-                [class.filled]="star <= reviewForm.value.rating!">
-        star
-      </mat-icon>
-    </div>
-    
-    <mat-form-field appearance="outline" class="full-width">
-      <mat-label>Véleményed</mat-label>
-      <textarea matInput formControlName="comment" rows="4"></textarea>
-      <mat-error *ngIf="reviewForm.get('comment')?.hasError('required')">
-        Kötelező megadni véleményt
-      </mat-error>
-      <mat-error *ngIf="reviewForm.get('comment')?.hasError('minlength')">
-        Legalább 10 karakter hosszúnak kell lennie
-      </mat-error>
-    </mat-form-field>
-    
-    <button mat-raised-button color="primary" type="submit" [disabled]="!reviewForm.valid">
-      Értékelés küldése
-    </button>
-  </form>
+<div *ngIf="!isUserLoggedIn" class="login-required">
+  <p>Vélemény írásához be kell jelentkezned!</p>
+</div>
+
+<form *ngIf="isUserLoggedIn" [formGroup]="reviewForm" (ngSubmit)="onSubmit()" class="review-form">
+  <h3>Írd meg a véleményed</h3>
+  
+  <mat-form-field appearance="outline" class="full-width">
+    <mat-label>Véleményed</mat-label>
+    <textarea matInput formControlName="comment" rows="4"></textarea>
+    <mat-error *ngIf="reviewForm.get('comment')?.hasError('required')">
+      Kötelező megadni véleményt
+    </mat-error>
+    <mat-error *ngIf="reviewForm.get('comment')?.hasError('minlength')">
+      Legalább 10 karakter hosszúnak kell lennie
+    </mat-error>
+  </mat-form-field>
+  
+  <button mat-raised-button color="primary" type="submit" [disabled]="!reviewForm.valid">
+    Vélemény küldése
+  </button>
+</form>

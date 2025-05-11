@@ -1,10 +1,9 @@
-/* Általános stílusok */
+
 .reviews-container, .review-form {
     margin: 2rem 0;
     max-width: 800px;
   }
   
-  /* Értékelési kártyák */
   .review-card {
     margin-bottom: 1.5rem;
   }
@@ -34,10 +33,32 @@
     font-size: 20px;
   }
   
+.rating-selector {
+    display: flex;
+    align-items: center;
+    margin-bottom: 1.5rem;
+  }
+  
+  .rating-selector .rating-stars {
+    display: inline-flex;
+    margin-right: 1rem;
+  }
+  
+  .rating-selector .rating-text {
+    font-size: 1rem;
+    font-weight: 500;
+    color: #555;
+  }
+  
   .rating-selector mat-icon {
     cursor: pointer;
     font-size: 2rem;
     color: #ccc;
+    transition: color 0.3s, transform 0.2s;
+  }
+  
+  .rating-selector mat-icon:hover {
+    transform: scale(1.2);
   }
   
   .rating-selector mat-icon.filled {

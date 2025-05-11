@@ -28,7 +28,13 @@ export class ReviewListComponent {
     this.loading = true;
     this.reviewService.getReviewsForProduct(this.productId).subscribe({
       next: (reviews) => {
-        this.reviews = reviews;
+        console.log('Raw review data:', reviews);
+        // Ensure ratings are numbers, not strings
+        this.reviews = reviews.map(review => ({
+          ...review,
+          rating: Number(review.rating) // Convert to number to ensure correct star display
+        }));
+        console.log('Processed reviews:', this.reviews);
         this.loading = false;
       },
       error: (err) => {

@@ -1,4 +1,18 @@
 <div class="layout">
+  <!-- Comparison bar -->
+  <div class="comparison-bar" *ngIf="(getSelectedProducts() | async)?.length">
+    <div class="comparison-content">
+      <span class="comparison-title">
+        <mat-icon>compare</mat-icon>
+        <span>Összehasonlítás</span>
+        <span class="comparison-counter">{{ (getSelectedProducts() | async)?.length }}/2</span>
+      </span>
+      <button mat-flat-button color="primary" (click)="goToComparison()" 
+        [disabled]="(getSelectedProducts() | async)?.length !== 2">
+        Összehasonlítás
+      </button>
+    </div>
+  </div>
   <aside class="filter-sidebar">
     <div [formGroup]="filterForm">
       <div class="sidebar-header">
@@ -157,12 +171,20 @@
               </td>
               <td class="actions-column">
                 <div class="product-actions-table">
-                  <button mat-flat-button color="primary" class="action-button"
+                  <button mat-icon-button color="primary" class="action-button"
                     (click)="viewProductDetails(product.id)">
-                    Részletek
+                    <mat-icon>visibility</mat-icon>
                   </button>
-                  <button mat-stroked-button color="primary" class="action-button" (click)="addToCart(product.id)">
+                  <button mat-icon-button color="primary" class="action-button" (click)="addToCart(product.id)">
                     <mat-icon>add_shopping_cart</mat-icon>
+                  </button>
+                  <button *ngIf="!isInComparison(product.id)" mat-stroked-button color="accent" class="action-button"
+                    matTooltip="Hozzáadás az összehasonlításhoz" (click)="addToComparison(product.id, $event)">
+                    <mat-icon>compare_arrows</mat-icon>
+                  </button>
+                  <button *ngIf="isInComparison(product.id)" mat-flat-button color="accent" class="action-button"
+                    matTooltip="Eltávolítás az összehasonlításból" (click)="removeFromComparison(product.id, $event)">
+                    <mat-icon>compare_arrows</mat-icon>
                   </button>
                 </div>
               </td>
@@ -186,3 +208,4 @@
     </ng-template>
   </main>
 </div>
+<app-chatbot></app-chatbot>

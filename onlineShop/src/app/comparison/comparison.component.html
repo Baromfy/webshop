@@ -1,0 +1,82 @@
+<div class="comparison-container">
+  <h1 class="title">Termék összehasonlítás</h1>
+  
+  <div *ngIf="errorMessage" class="error-message">
+    <p>{{ errorMessage }}</p>
+    <button class="back-button" (click)="goBack()">Vissza a termékekhez</button>
+  </div>
+  
+  <div *ngIf="!errorMessage && products.length === 2" class="preferences-section">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Mire szeretné használni a laptopot?</mat-card-title>
+        <mat-card-subtitle>Válassza ki a felhasználási területeket, és mi segítünk kiválasztani a megfelelő terméket</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <form [formGroup]="userPreferencesForm" class="preferences-form">
+          <div class="preferences-grid">
+            <div *ngFor="let scenario of usageScenarios" class="preference-item">
+              <mat-checkbox [formControlName]="scenario.id">{{ scenario.label }}</mat-checkbox>
+            </div>
+          </div>
+          <div class="preferences-actions">
+            <button mat-raised-button color="primary" (click)="analyzePreferences()">Ajánlás kérése</button>
+          </div>
+        </form>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  
+  <div *ngIf="showRecommendation && products.length === 2" class="recommendation-section">
+    <mat-card>
+      <mat-card-header>
+        <mat-card-title>Termék ajánlás</mat-card-title>
+        <mat-card-subtitle>AI asszisztens által</mat-card-subtitle>
+      </mat-card-header>
+      <mat-card-content>
+        <div *ngIf="isLoadingAiRecommendation" class="ai-loading">
+          <mat-spinner diameter="40"></mat-spinner>
+          <p>Az AI elemzi a termékek jellemzőit és az Ön igényeit...</p>
+        </div>
+        
+        <div *ngIf="!isLoadingAiRecommendation && recommendedProductIndex !== null" class="recommendation-content ai-recommendation">
+          <div class="ai-avatar">AI</div>
+          <div class="ai-message">
+            <h3>Javaslatunk: {{ products[recommendedProductIndex].manufacturer }} {{ products[recommendedProductIndex].name }}</h3>
+            <p class="recommendation-reason">{{ recommendationReason }}</p>
+            <div class="recommendation-badge">AI Ajánlás</div>
+          </div>
+        </div>
+        
+        <div *ngIf="!isLoadingAiRecommendation && recommendedProductIndex === null && aiRecommendation" class="recommendation-content ai-recommendation">
+          <div class="ai-avatar">AI</div>
+          <div class="ai-message">
+            <p class="recommendation-reason">{{ aiRecommendation }}</p>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+  
+  <div *ngIf="!errorMessage && products.length === 2" class="comparison-table">
+    <div class="comparison-row header">
+      <div class="attribute-label"></div>
+      <div class="product-column" *ngFor="let product of products">
+        <img src="../../assets/laptop.jpg" alt="{{ product.name }}" class="product-image">
+      </div>
+    </div>
+    
+    <div class="comparison-row" *ngFor="let attr of attributesToDisplay">
+      <div class="attribute-label">{{ attributeLabels[attr] }}</div>
+      <div class="product-column" *ngFor="let product of products">
+        <div [ngClass]="{'highlight': getProductAttribute(products[0], attr) !== getProductAttribute(products[1], attr)}">
+          {{ formatValue(attr, getProductAttribute(product, attr)) }}
+        </div>
+      </div>
+    </div>
+    
+    <div class="comparison-actions">
+      <button class="back-button" (click)="goBack()">Vissza a termékekhez</button>
+    </div>
+  </div>
+</div>

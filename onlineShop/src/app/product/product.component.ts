@@ -16,6 +16,11 @@ import { MatInputModule } from '@angular/material/input';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { CartService } from '../cart.service';
+import { ComparisonService } from '../comparison.service';
+import { ChatbotComponent } from "../chatbot/chatbot.component";
+import { MatSnackBarModule, MatSnackBar } from '@angular/material/snack-bar';
+import { MatTooltipModule } from '@angular/material/tooltip';
+import { MatBadgeModule } from '@angular/material/badge';
 
 
 @Component({
@@ -33,7 +38,11 @@ import { CartService } from '../cart.service';
     MatListModule,
     MatSelectModule,
     MatInputModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ChatbotComponent,
+    MatSnackBarModule,
+    MatTooltipModule,
+    MatBadgeModule
   ]
 })
 export class ProductComponent implements OnInit {
@@ -63,7 +72,9 @@ export class ProductComponent implements OnInit {
     private firestore: Firestore,
     private router: Router,
     private fb: FormBuilder,
-    private cartService: CartService
+    private cartService: CartService,
+    private comparisonService: ComparisonService,
+    private snackBar: MatSnackBar
   ) {
     this.filterForm = this.fb.group({
       search: [''], 
@@ -224,14 +235,46 @@ export class ProductComponent implements OnInit {
     });
   }
 
+  addToComparison(productId: string, event: Event): void {
+    event.stopPropagation();
+    this.comparisonService.addToComparison(productId);
+    this.snackBar.open('Termék hozzáadva az összehasonlításhoz', 'Bezár', {
+      duration: 3000,
+    });
+  }
+
+  removeFromComparison(productId: string, event: Event): void {
+    event.stopPropagation();
+    this.comparisonService.removeFromComparison(productId);
+    this.snackBar.open('Termék eltávolítva az összehasonlításból', 'Bezár', {
+      duration: 3000,
+    });
+  }
+
+  isInComparison(productId: string): boolean {
+    return this.comparisonService.isInComparison(productId);
+  }
+
+  getSelectedProducts(): Observable<string[]> {
+    return this.comparisonService.getSelectedProducts();
+  }
+
+  goToComparison(): void {
+    this.comparisonService.goToComparison();
+  }
+
   addToCart(productId: string) {
     this.cartService.addToCart(productId).subscribe({
       next: () => {
-        window.alert('A termék sikeresen hozzáadva a kosárhoz!');
+        this.snackBar.open('A termék sikeresen hozzáadva a kosárhoz!', 'Bezár', {
+          duration: 3000,
+        });
       },
       error: (error: Error) => {
         console.error('Hiba a kosárhoz adás közben:', error);
-        window.alert('Hiba történt a kosárhoz adás során. Kérjük, jelentkezzen be, vagy próbálja újra később!');
+        this.snackBar.open('Hiba történt a kosárhoz adás során. Kérjük, jelentkezzen be, vagy próbálja újra később!', 'Bezár', {
+          duration: 3000,
+        });
       }
     });
   }

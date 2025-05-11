@@ -1,38 +1,69 @@
-/* Általános stílusok */
 .reviews-container, .review-form {
     margin: 2rem 0;
     max-width: 800px;
   }
   
-  /* Értékelési kártyák */
-  .review-card {
-    margin-bottom: 1.5rem;
-  }
-  
-  .review-avatar {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 40px;
-    height: 40px;
-    border-radius: 50%;
-    background-color: #3f51b5;
-    color: white;
-    font-weight: bold;
-  }
-  
-  /* Csillag értékelés */
-  .rating-stars {
-    display: inline-flex;
-    align-items: center;
-  }
-  
-  .rating-stars mat-icon {
-    color: #ffb400;
-    width: 20px;
-    height: 20px;
-    font-size: 20px;
-  }
+.review-card {
+  margin-bottom: 1.5rem;
+  transition: transform 0.2s;
+}
+
+.review-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.review-avatar {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #3f51b5;
+  color: white;
+  font-weight: bold;
+}
+
+.rating-stars {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.rating-stars mat-icon {
+  color: #ffb400;
+  width: 20px;
+  height: 20px;
+  font-size: 20px;
+}
+
+mat-card-title {
+  font-size: 1.1rem;
+  margin-bottom: 4px;
+}
+
+mat-card-subtitle {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.rating-value {
+  margin: 0 8px;
+  font-weight: 500;
+  color: #555;
+}
+
+.review-date {
+  margin-left: auto;
+  color: #666;
+  font-size: 0.9em;
+}
+
+mat-card-content {
+  padding-top: 10px;
+}
   
   .rating-selector mat-icon {
     cursor: pointer;
@@ -44,7 +75,6 @@
     color: #ffb400;
   }
   
-  /* Form stílusok */
   .full-width {
     width: 100%;
     margin-bottom: 1rem;
