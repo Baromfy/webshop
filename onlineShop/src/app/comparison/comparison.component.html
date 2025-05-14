@@ -31,12 +31,13 @@
     <mat-card>
       <mat-card-header>
         <mat-card-title>Termék ajánlás</mat-card-title>
-        <mat-card-subtitle>AI asszisztens által</mat-card-subtitle>
+        <mat-card-subtitle>AI asszisztens által (angol nyelven)</mat-card-subtitle>
       </mat-card-header>
       <mat-card-content>
         <div *ngIf="isLoadingAiRecommendation" class="ai-loading">
           <mat-spinner diameter="40"></mat-spinner>
           <p>Az AI elemzi a termékek jellemzőit és az Ön igényeit...</p>
+          <small>(Az AI angol nyelven válaszol)</small>
         </div>
         
         <div *ngIf="!isLoadingAiRecommendation && recommendedProductIndex !== null" class="recommendation-content ai-recommendation">

@@ -15,14 +15,21 @@ export class ChatbotComponent implements OnInit {
   userInput = '';
   isLoading = false;
   isOpen = false;
-  OPENROUTER_API_KEY = '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'; // Replace with your actual key
-  selectedModel = 'mistralai/mistral-7b-instruct:free'; // Default model
-
+  OPENROUTER_API_KEY = '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';
+  selectedModel = 'mistralai/mistral-7b-instruct:free';
 
   constructor(private http: HttpClient, private chatbotService: ChatbotService) {}
 
   ngOnInit() {
-    this.addBotMessage('Hello! I can help you with both laptop-specific questions and general knowledge queries. What would you like to know?');
+    this.testServerConnection();
+    this.addBotMessage('Hello! I can answer your questions about laptops and computers. What would you like to know?');
+  }
+
+  testServerConnection() {
+    this.http.get('/api/test').subscribe(
+      (result) => console.log('Server connection successful:', result),
+      (error) => console.warn('Failed to connect to server:', error)
+    );
   }
 
   toggleChat() {
@@ -37,7 +44,7 @@ export class ChatbotComponent implements OnInit {
     this.messages.push({ text: message, sender: 'bot' });
   }
 
-  async sendMessage() {
+  sendMessage() {
     if (!this.userInput.trim()) return;
 
     const userMessage = this.userInput;
@@ -46,24 +53,59 @@ export class ChatbotComponent implements OnInit {
     this.isLoading = true;
 
     const messages = [
-      {
-        role: "system",
-        content: "You're a helpful assistant who can answer both general knowledge questions and laptop-specific queries."
-      },
       { role: "user", content: userMessage }
     ];
 
-    try {
-      const response: any = await this.chatbotService.sendMessage(messages, this.selectedModel).toPromise();
-      const botResponse = response.choices[0].message.content;
-      this.addBotMessage(botResponse);
-    } catch (error) {
-      this.addBotMessage("Sorry, I couldn't process your request.");
-    } finally {
-      this.isLoading = false;
-    }
+    this.chatbotService.sendMessage(messages, this.selectedModel).subscribe({
+      next: (response: any) => {
+        this.isLoading = false;
+        if (response && response.choices && response.choices[0] && response.choices[0].message) {
+          const botResponse = response.choices[0].message.content;
+          this.addBotMessage(botResponse);
+        } else {
+          this.handleDirectApiCall(messages);
+        }
+      },
+      error: (error) => {
+        console.error('Server API error:', error);
+        this.handleDirectApiCall(messages);
+      }
+    });
   }
 
+  handleDirectApiCall(messages: any[]) {
+    console.log('Trying direct API call...');
+    
+    this.http.post(
+      'https://openrouter.ai/api/v1/chat/completions',
+      {
+        model: this.selectedModel,
+        messages: messages
+      },
+      {
+        headers: {
+          'Authorization': `Bearer ${this.OPENROUTER_API_KEY}`,
+          'HTTP-Referer': window.location.href,
+          'Content-Type': 'application/json'
+        }
+      }
+    ).subscribe({
+      next: (response: any) => {
+        this.isLoading = false;
+        if (response && response.choices && response.choices[0] && response.choices[0].message) {
+          const botResponse = response.choices[0].message.content;
+          this.addBotMessage(botResponse);
+        } else {
+          this.addBotMessage("I received an unexpected response format. Please try again later.");
+        }
+      },
+      error: (error) => {
+        console.error('Direct API call error:', error);
+        this.isLoading = false;
+        this.addBotMessage("I'm unable to process your request at the moment. Please try again later.");
+      }
+    });
+  }
 
   onKeyPress(event: KeyboardEvent) {
     if (event.key === 'Enter') {

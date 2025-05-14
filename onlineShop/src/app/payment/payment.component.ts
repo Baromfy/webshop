@@ -7,7 +7,7 @@ import { environment } from '../../environments/environment';
 import { PaymentService, PaymentResult } from '../payment.service';
 import { CartService } from '../cart.service';
 import { finalize } from 'rxjs/operators';
-import { Firestore, collection, addDoc } from '@angular/fire/firestore';
+import { Firestore, collection, addDoc, doc, getDoc } from '@angular/fire/firestore';
 
 declare var Square: any;
 
@@ -38,7 +38,6 @@ export class PaymentComponent implements OnInit {
   totalAmount = 0;
   cartItems: any[] = [];
   
-  // Store API interaction information
   apiInteraction = {
     sent: false,
     request: null as any,
@@ -54,26 +53,47 @@ export class PaymentComponent implements OnInit {
   ) {}
 
   async ngOnInit() {
-    // Load cart items to get total amount
     this.loadCartData();
-    // Initialize Square payment form
     this.initializeSquare();
   }
 
   loadCartData() {
-    // For demo purposes, just set a fixed amount
-    this.totalAmount = 25000; // 25,000 HUF
+    this.cartService.getCartItems().subscribe(items => {
+      this.cartItems = items;
+      this.calculateTotal();
+    });
+  }
+  
+  calculateTotal() {
+    this.totalAmount = 0;
     
-    // In a real app, you would load cart data from a service
-    // this.cartService.getCartItems().subscribe(items => {
-    //   this.cartItems = items;
-    //   this.calculateTotal();
-    // });
+    if (!this.cartItems || this.cartItems.length === 0) {
+      return;
+    }
+    
+    const productPromises = this.cartItems.map(item => {
+      const productRef = doc(this.firestore, 'products', item.productId);
+      return getDoc(productRef).then(docSnap => {
+        if (docSnap.exists()) {
+          const product = docSnap.data() as any;
+          this.totalAmount += (product['price'] || 0) * item.quantity;
+          
+          return { ...item, product };
+        }
+        return item;
+      });
+    });
+    
+    Promise.all(productPromises).then(enrichedItems => {
+      this.cartItems = enrichedItems;
+      console.log('Cart total calculated:', this.totalAmount);
+    }).catch(error => {
+      console.error('Error calculating cart total:', error);
+    });
   }
 
   async initializeSquare() {
     try {
-      // Check if Square is defined in the window object
       if (typeof Square === 'undefined') {
         console.log('Square SDK not found, attempting to load it');
         this.loadSquareSdk();
@@ -99,11 +119,9 @@ export class PaymentComponent implements OnInit {
   }
 
   loadSquareSdk() {
-    // Check if the script is already in the document
     if (document.querySelector('script[src="https://sandbox.web.squarecdn.com/v1/square.js"]')) {
       console.log('Square SDK script already exists, waiting for it to load');
       
-      // Check every 500ms if Square is defined
       const checkInterval = setInterval(() => {
         if (typeof Square !== 'undefined') {
           clearInterval(checkInterval);
@@ -111,7 +129,6 @@ export class PaymentComponent implements OnInit {
         }
       }, 500);
       
-      // Set a timeout to stop checking after 10 seconds
       setTimeout(() => {
         clearInterval(checkInterval);
         if (typeof Square === 'undefined') {
@@ -140,20 +157,16 @@ export class PaymentComponent implements OnInit {
     this.resetApiInteraction();
 
     try {
-      // Validate form data first
       if (!this.paymentData.fullName || !this.paymentData.email || !this.paymentData.termsAccepted) {
         throw new Error('Kérjük, töltse ki az összes kötelező mezőt!');
       }
 
-      // Check if Square environment is properly configured
       if (!environment.square) {
         throw new Error('Square configuration is missing in environment settings');
       }
       
-      // Create an example of the request that would be sent to Square
       const idempotencyKey = this.generateIdempotencyKey();
       
-      // Log this API call before actually sending it
       const exampleRequest = {
         endpoint: 'https://connect.squareupsandbox.com/v2/payments',
         method: 'POST',
@@ -163,7 +176,7 @@ export class PaymentComponent implements OnInit {
           'Content-Type': 'application/json'
         },
         body: {
-          source_id: 'EXAMPLE_TOKEN', // This would be the real token in a live situation
+          source_id: 'EXAMPLE_TOKEN',
           idempotency_key: idempotencyKey,
           amount_money: {
             amount: this.totalAmount,
@@ -173,16 +186,12 @@ export class PaymentComponent implements OnInit {
         }
       };
       
-      // Display the example request in the UI
       this.apiInteraction.sent = true;
       this.apiInteraction.request = exampleRequest;
       this.apiInteraction.visible = true;
       
       console.log('Would send this request to Square:', exampleRequest);
       
-      // IMPORTANT: We're now using Square Web Payments SDK's built-in payment method
-      // This method handles the API call and CORS issues
-      // Generate payment token with Square
       const tokenResult = await this.card.tokenize();
       
       if (tokenResult.status === 'OK') {
@@ -190,8 +199,6 @@ export class PaymentComponent implements OnInit {
         
         console.log('Payment token generated, calling backend service');
         
-        // Use our backend service to process the payment
-        // This avoids CORS issues and allows API calls to appear in Square dashboard
         this.paymentService.createDirectPayment(
           tokenResult.token,
           this.totalAmount,
@@ -204,32 +211,26 @@ export class PaymentComponent implements OnInit {
           next: (responseData) => {
             console.log('Payment response from backend:', responseData);
                         
-            // Handle the response
             if (responseData.success && responseData.payment) {
-              // Create a API-like response object for UI
               const paymentResponse = {
                 ok: true,
                 status: 200,
                 statusText: 'OK'
               };
               
-              // Log the successful response for debugging
               console.log('Successful payment:', responseData.payment);
               
-              // Process payment success
+
               this.handlePaymentSuccess(responseData, paymentResponse);
             } else {
-              // Create error response for UI
               const paymentResponse = {
                 ok: false,
                 status: responseData.errors ? 400 : 500,
                 statusText: 'Error'
               };
               
-              // Log the error for debugging
               console.error('Payment failed:', responseData);
               
-              // Process payment failure
               this.handlePaymentError(responseData, paymentResponse);
             }
           },
@@ -390,7 +391,7 @@ export class PaymentComponent implements OnInit {
     this.showStatus(errorMessage, false);
   }
 
-  // API Interaction logging
+
   resetApiInteraction() {
     this.apiInteraction = {
       sent: false,
@@ -403,7 +404,6 @@ export class PaymentComponent implements OnInit {
   logApiRequest(sourceId: string, amount: number, currency: string, orderInfo: any) {
     this.apiInteraction.sent = true;
     
-    // Safely access environment.square
     const locationId = environment.square?.locationId || 'LOCATION_ID_NOT_FOUND';
     
     this.apiInteraction.request = {

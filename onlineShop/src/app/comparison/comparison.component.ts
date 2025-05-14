@@ -172,63 +172,82 @@ export class ComparisonComponent implements OnInit {
     if (selectedPreferences.length > 0) {
       prompt = `Which laptop is more suitable for these uses between the two: ${selectedPreferences.join(', ')}?`;
     } else {
-      prompt = 'Which is a better value?';
+      prompt = 'Which laptop is a better value?';
     }
 
-    const message = {
-      role: 'user',
-      content: prompt
-    };
+    const laptop1Specs = this.createLaptopSpecString(this.products[0]);
+    const laptop2Specs = this.createLaptopSpecString(this.products[1]);
 
-    this.chatbotService.sendMessage([message], 'mistralai/mistral-7b-instruct:free').subscribe({
+    const messages = [
+      {
+        role: "system",
+        content: `You are a laptop recommendation assistant. Compare these two laptops based on their specifications and the user's needs. 
+        Analyze which one is better for the specific use cases. Your response should be concise and focused on which laptop is recommended and why.
+        
+        Laptop 1: ${this.products[0].manufacturer} ${this.products[0].name}
+        ${laptop1Specs}
+        
+        Laptop 2: ${this.products[1].manufacturer} ${this.products[1].name}
+        ${laptop2Specs}`
+      },
+      {
+        role: 'user',
+        content: prompt
+      }
+    ];
+
+    this.chatbotService.sendMessage(messages, 'mistralai/mistral-7b-instruct:free').subscribe({
       next: (response: any) => {
         this.isLoadingAiRecommendation = false;
         
         if (response && response.choices && response.choices[0] && response.choices[0].message) {
-          this.aiRecommendation = response.choices[0].message.content;
+          let aiResponse = response.choices[0].message.content;
+              
+          this.aiRecommendation = aiResponse;
           
-          const product1 = this.products[0];
-          const product2 = this.products[1];
+          const laptop1Mention = aiResponse.toLowerCase().includes(this.products[0].name.toLowerCase()) || 
+                               aiResponse.toLowerCase().includes(this.products[0].manufacturer.toLowerCase() + ' ' + this.products[0].name.toLowerCase());
           
-          const product1Mentions = this.countProductMentions(this.aiRecommendation, product1);
-          const product2Mentions = this.countProductMentions(this.aiRecommendation, product2);
+          const laptop2Mention = aiResponse.toLowerCase().includes(this.products[1].name.toLowerCase()) || 
+                               aiResponse.toLowerCase().includes(this.products[1].manufacturer.toLowerCase() + ' ' + this.products[1].name.toLowerCase());
           
-          if (product1Mentions > product2Mentions) {
+          if (laptop1Mention && !laptop2Mention) {
             this.recommendedProductIndex = 0;
-          } else if (product2Mentions > product1Mentions) {
+          } else if (laptop2Mention && !laptop1Mention) {
             this.recommendedProductIndex = 1;
           } else {
             this.recommendedProductIndex = null;
           }
           
-          this.recommendationReason = this.aiRecommendation;
+          this.recommendationReason = aiResponse;
         } else {
-          this.handleAiError();
         }
       },
       error: (error) => {
-        console.error('Error getting AI recommendation:', error);
-        this.handleAiError();
+        console.error('AI recommendation error:', error);
       }
     });
   }
   
-  countProductMentions(text: string, product: Product): number {
-    const nameRegex = new RegExp(product.name, 'gi');
-    const manufacturerRegex = new RegExp(product.manufacturer, 'gi');
-    
-    const nameMatches = (text.match(nameRegex) || []).length;
-    const manufacturerMatches = (text.match(manufacturerRegex) || []).length;
-    
-    return nameMatches + manufacturerMatches;
+
+  private createLaptopSpecString(product: Product): string {
+    return `
+    - Price: ${product.price} USD
+    - Manufacturer: ${product.manufacturer}
+    - OS: ${product.os || 'N/A'}
+    - Processor: ${product.processorType || 'N/A'} (${product.processorSpeed || 'N/A'} GHz)
+    - Cache: ${product.cacheSize || 'N/A'} MB
+    - RAM: ${product.ramSize || 'N/A'} GB ${product.ramType || ''}
+    - Screen: ${product.screenSize || 'N/A'} inch, ${product.screenResolution || 'N/A'}, ${product.refreshRate || 'N/A'} Hz
+    - Storage: ${product.storageCapacity || 'N/A'} GB ${product.storageType || ''}
+    - Graphics: ${product.gpuType || 'N/A'} with ${product.gpuMemory || 'N/A'} memory
+    - Battery: ${product.batteryCells || 'N/A'} cells
+    - Weight: ${product.weight || 'N/A'} kg
+    - Ports: ${product.usb32Ports || 'N/A'} USB 3.2, ${product.usbTypeCPorts || 'N/A'} USB-C
+    - Product Family: ${product.productFamily || 'N/A'}
+    `;
   }
   
-  private handleAiError(): void {
-    this.isLoadingAiRecommendation = false;
-    this.aiRecommendation = 'Unfortunately, I cannot generate a recommendation at this time. Please try again later.';
-    this.recommendedProductIndex = null;
-    this.recommendationReason = 'Error occurred while generating the recommendation.';
-  }
 
   analyzePreferences(): void {
     this.getAiRecommendation();

@@ -1,4 +1,9 @@
-require('dotenv').config();
+const path = require('path');
+require('dotenv').config({ path: path.resolve(__dirname, '.env') });
+
+console.log('Environment variables loaded:');
+console.log('OPENROUTER_API_KEY present:', process.env.OPENROUTER_API_KEY ? 'Yes (starts with: ' + process.env.OPENROUTER_API_KEY.substring(0, 5) + '...)' : 'No');
+console.log('SQUARE_ACCESS_TOKEN present:', process.env.SQUARE_ACCESS_TOKEN ? 'Yes' : 'No');
 
 process.env.NODE_PATH = require('path').resolve(__dirname, '../../node_modules');
 require('module').Module._initPaths();
@@ -24,120 +29,59 @@ const squareClient = new Client({
   environment: Environment.Sandbox
 });
 
+app.get('/api/test', (req, res) => {
+  res.json({ status: 'Server is running properly' });
+});
+
 app.post('/api/chat', async (req, res) => {
   try {
     const { messages, model } = req.body;
-    const userMessage = messages[messages.length - 1].content.toLowerCase();
     
-    let productDb;
-    try {
-      productDb = require('./prdouctDatabase.json');
-    } catch (dbError) {
-      try {
-        console.log('Database not found in current directory, trying parent directory...');
-        productDb = require('../../server/prdouctDatabase.json');
-      } catch (parentDbError) {
-        console.error('Failed to load product database', parentDbError);
-        return res.status(500).json({ error: 'Product database not found' });
-      }
+    if (!messages || !messages.length) {
+      return res.status(400).json({ error: 'No messages provided' });
     }
     
-    const isProductQuestion = userMessage.includes('laptop') || 
-                             userMessage.includes('product') ||
-                             userMessage.includes('computer') ||
-                             userMessage.includes('device') ||
-                             userMessage.includes('processor') ||
-                             userMessage.includes('gpu') ||
-                             userMessage.includes('graphics') || 
-                             userMessage.includes('specs') ||
-                             userMessage.includes('price') ||
-                             userMessage.includes('brand') ||
-                             userMessage.includes('dell') ||
-                             userMessage.includes('asus') ||
-                             userMessage.includes('lenovo') ||
-                             userMessage.includes('hp') ||
-                             userMessage.includes('apple') ||
-                             userMessage.includes('macbook') ||
-                             userMessage.includes('acer') ||
-                             userMessage.includes('msi') ||
-                             userMessage.includes('suitable') ||
-                             userMessage.includes('better value') ||
-                             userMessage.includes('which laptop is more') ||
-                             userMessage.includes('which is a better');
+    console.log('Processing messages:', JSON.stringify(messages));
     
-    let aiMessages = [...messages];
+    const FALLBACK_API_KEY = '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';
+    const apiKey = process.env.OPENROUTER_API_KEY || FALLBACK_API_KEY;
     
-    if (messages[0].role === 'system') {
-      if (isProductQuestion) {
-        aiMessages[0] = {
-          role: "system",
-          content: "You're a laptop expert. Answer questions about specs, prices, and comparisons based on the following database. " +
-                   "Only use information found in this database when answering product-specific questions. " +
-                   "Here's the summary of available products: " + 
-                   JSON.stringify(productDb.products.map(p => ({
-                     id: p.id,
-                     name: p.name,
-                     brand: p.brand,
-                     price: p.price,
-                     processor: p.specs.processor.type,
-                     memory: p.specs.memory.size + "GB",
-                     storage: p.specs.storage.capacity + "GB " + p.specs.storage.type,
-                     display: p.specs.display.size + "\" " + p.specs.display.resolution,
-                     graphics: p.specs.graphics.type
-                   })))
-        };
-      } else {
-        aiMessages[0] = {
-          role: "system",
-          content: "You're a helpful assistant who can answer questions on a wide range of topics."
-        };
-      }
-    } else {
-      if (isProductQuestion) {
-        aiMessages.unshift({
-          role: "system",
-          content: "You're a laptop expert. Answer questions about specs, prices, and comparisons based on the following database. " +
-                   "Only use information found in this database when answering product-specific questions. " +
-                   "Here's the summary of available products: " + 
-                   JSON.stringify(productDb.products.map(p => ({
-                     id: p.id,
-                     name: p.name,
-                     brand: p.brand,
-                     price: p.price,
-                     processor: p.specs.processor.type,
-                     memory: p.specs.memory.size + "GB",
-                     storage: p.specs.storage.capacity + "GB " + p.specs.storage.type,
-                     display: p.specs.display.size + "\" " + p.specs.display.resolution,
-                     graphics: p.specs.graphics.type
-                   })))
-        });
-      } else {
-        aiMessages.unshift({
-          role: "system",
-          content: "You're a helpful assistant who can answer questions on a wide range of topics."
-        });
-      }
-    }
-
-    const response = await axios.post(
-      'https://openrouter.ai/api/v1/chat/completions',
-      {
-        model,
-        messages: aiMessages
+    console.log(`Using API key: ${apiKey.substring(0, 10)}...`);
+    
+    console.log('Full API Key: ' + apiKey);
+    
+    const response = await axios({
+      method: 'post',
+      url: 'https://openrouter.ai/api/v1/chat/completions',
+      data: {
+        model: model || 'mistralai/mistral-7b-instruct:free',
+        messages: messages
       },
-      {
-        headers: {
-          'Authorization': `Bearer ${process.env.OPENROUTER_API_KEY}`,
-          'HTTP-Referer': req.headers.referer || 'https://your-laptop-store.com',
-          'Content-Type': 'application/json'
-        }
+      headers: {
+        'Content-Type': 'application/json',
+        'Authorization': `Bearer ${apiKey}`,
+        'HTTP-Referer': 'http://localhost:4200'
       }
-    );
+    });
 
+    console.log('API response received:', JSON.stringify(response.data));
     res.json(response.data);
   } catch (error) {
     console.error('OpenRouter API error:', error.response?.data || error.message);
-    res.status(500).json({ error: 'Failed to get response from AI' });
+    
+    
+    console.log('Using fallback response due to API error');
+    const mockResponse = {
+      choices: [
+        {
+          message: {
+            content: "Ez egy sablon válasz, amit a chatbot generált. Kérlek, próbáld újra később.",
+          }
+        }
+      ]
+    };
+    
+    res.json(mockResponse);
   }
 });
 

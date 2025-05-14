@@ -37,16 +37,13 @@ export class FavouriteProductComponent implements OnInit {
     try {
       this.favorites = [];
       
-      // Get all favorites for the current user
       const favoritesQuery = collection(this.firestore, 'favorites');
       const querySnapshot = await getDocs(favoritesQuery);
   
       for (const favoriteDoc of querySnapshot.docs) {
         const favoriteData = favoriteDoc.data();
         
-        // Check if the favorite belongs to current user
         if (favoriteData['userId'] === this.userId) {
-          // Get the associated product document
           const productDocRef = doc(this.firestore, 'products', favoriteData['productId']);
           const productDoc = await getDoc(productDocRef);
           

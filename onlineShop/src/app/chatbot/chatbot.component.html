@@ -1,6 +1,6 @@
 <div class="chatbot-container" [class.open]="isOpen">
     <div class="chatbot-header" (click)="toggleChat()">
-      <h3>Virtual Assistant</h3>
+      <h3>Chatbot</h3>
       <span class="toggle-icon">{{ isOpen ? '▼' : '▲' }}</span>
     </div>
   
@@ -15,14 +15,14 @@
         </div>
         <div *ngIf="isLoading" class="loading-indicator">
           <div class="spinner"></div>
-          <span>Thinking...</span>
+          <span>Betöltés...</span>
         </div>
       </div>
   
       <div class="input-container">
         <input type="text" [(ngModel)]="userInput" (keyup)="onKeyPress($event)" 
-               placeholder="Ask me anything..." [disabled]="isLoading">
-        <button (click)="sendMessage()" [disabled]="!userInput.trim() || isLoading">Send</button>
+               placeholder="Írj ide..." [disabled]="isLoading">
+        <button (click)="sendMessage()" [disabled]="!userInput.trim() || isLoading">Küldés</button>
       </div>
     </div>
   </div>
