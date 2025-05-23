@@ -146,7 +146,7 @@ export class ComparisonComponent implements OnInit {
     }
     
     if (key === 'price') {
-      return `${value.toLocaleString()} Ft`;
+      return `${value.toLocaleString()} USD`;
     }
     
     return value.toString();

@@ -55,7 +55,7 @@
           </td>
           <td class="price-column">
             <div class="product-price">
-              {{ item.price | currency:'HUF':'symbol':'1.0-0' }}
+              {{ item.price | currency:'USD':'symbol':'1.0-0' }}
             </div>
           </td>
           <td class="quantity-column">
@@ -71,7 +71,7 @@
           </td>
           <td class="total-column">
             <div class="product-price">
-              {{ (item.price * item.quantity) | currency:'HUF':'symbol':'1.0-0' }}
+              {{ (item.price * item.quantity) | currency:'USD':'symbol':'1.0-0' }}
             </div>
           </td>
           <td class="actions-column">
@@ -87,15 +87,15 @@
       <div class="summary-details">
         <div class="summary-row">
           <span>Összesen:</span>
-          <span class="summary-value">{{getTotal() | currency:'HUF':'symbol':'1.0-0'}}</span>
+          <span class="summary-value">{{getTotal() | currency:'USD':'symbol':'1.0-0'}}</span>
         </div>
         <div class="summary-row">
           <span>Szállítás:</span>
-          <span class="summary-value">0 Ft</span>
+          <span class="summary-value">$0</span>
         </div>
         <div class="summary-row total">
           <span>Végösszeg:</span>
-          <span class="summary-value">{{getTotal() | currency:'HUF':'symbol':'1.0-0'}}</span>
+          <span class="summary-value">{{getTotal() | currency:'USD':'symbol':'1.0-0'}}</span>
         </div>
       </div>
       <button mat-flat-button color="primary" class="checkout-btn" routerLink="/payment">
