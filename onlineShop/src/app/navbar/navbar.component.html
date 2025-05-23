@@ -9,8 +9,8 @@
     </button>
   <span class="spacer"></span>
 
-    <button mat-button *ngIf="authService.isAdmin$  | async" routerLink="/uploadProducts">
-        Termékek feltöltése
+    <button mat-button *ngIf="authService.isAdmin$  | async" routerLink="/admin">
+        Admin Panel
       </button>
     
     <button mat-button *ngIf="!(authService.loggedIn | async)" routerLink="/login">
