@@ -5,11 +5,29 @@
    - CVV: 111
    - Irányítószám: bármi
 
-## Project indítás
 
-   - cd OnlineShop
-   - npm install
-   - cd server
-   - npm install
-   - npm run start:dev
+## Telepítési lépések
+
+   ### 2. Frontend (Angular alkalmazás) telepítése
+
+```bash
+cd onlineShop
+npm install
+```
+
+   ### 3. Backend (Express szerver) telepítése
+
+```bash
+cd server
+npm install
+cd ..
+```
+
+## Futtatás
+
+A főkönyvtárból (`onlineShop`) kell futtatni:
+
+```bash
+npm run start:dev
+```
 
